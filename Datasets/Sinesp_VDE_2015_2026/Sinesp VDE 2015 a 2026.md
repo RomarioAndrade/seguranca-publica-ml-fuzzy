@@ -1,0 +1,3 @@
+
+
+- /databases/Sinesp_VDE_2015_2026 - <https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/dados-nacionais-1/base-de-dados-e-notas-metodologicas-dos-gestores-estaduais-sinesp-vde-2022-e-2023>
