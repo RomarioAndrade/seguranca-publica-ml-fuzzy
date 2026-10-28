@@ -4,6 +4,12 @@ Trabalho Integrado de Fundamentos de IA
 ### Base de Dados
 As bases de dados utilizados neste atividade estão armazenadas na pasta [Datasets](https://github.com/RomarioAndrade/seguranca-publica-ml-fuzzy/tree/493f99e27d45b2a411968d59d4ab6c73e75bbb52/Datasets)
 
+### Domínio Escolhido (A definir)
+- Trafico de drogras
+- Feminicídio
+- Milicias e Facções (variaveis ocultas)
+- 
+
 ### Datasets em Avaliação
 Lista de datasets a serem analizados se serão cruzados a outros 
 datasets
