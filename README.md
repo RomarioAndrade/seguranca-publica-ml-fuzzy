@@ -27,3 +27,21 @@ datasets
 - https://forumseguranca.org.br/publicacoes/anuario-brasileiro-de-seguranca-publica/
 - https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/dados-nacionais-1/base-de-dados-e-notas-metodologicas-dos-gestores-estaduais-sinesp-vde-2022-e-2023
 - https://soudapaz.org/wp-content/uploads/2023/09/Guia-Seguranca-Publica-em-dados.pdf
+
+
+## 1. SINESP VDE — Ministério da Justiça
+Página oficial (arquivos + notas metodológicas por estado):
+https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/dados-nacionais-1/base-de-dados-e-notas-metodologicas-dos-gestores-estaduais-sinesp-vde-2022-e-2023
+Arquivos por ano (.xlsx, ~20-30 MB cada):
+- 2024  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2024.xlsx/@@download/file
+- 2019  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2019.xlsx/@@download/file
+- 2020  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2020.xlsx/@@download/file
+- 2021  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2021.xlsx/@@download/file
+- 2022  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2022.xlsx/@@download/file
+- 2023  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2023.xlsx/@@download/file
+- 2026  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2026.xlsx/@@download/file   (parcial: jan-ago)
+
+## 2. IBGE — população por ano + mulheres (Censo 2022):
+
+
+## 3. IBGE — população, códigos e recorte da Amazônia Legal
