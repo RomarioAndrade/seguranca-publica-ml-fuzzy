@@ -2,13 +2,13 @@
 Trabalho Integrado de Fundamentos de IA
 
 ### Base de Dados
-As bases de dados utilizados neste atividade estão armazenadas na pasta [Datasets](https://github.com/RomarioAndrade/seguranca-publica-ml-fuzzy/tree/493f99e27d45b2a411968d59d4ab6c73e75bbb52/Datasets)
+As bases de dados utilizada neste atividade estão armazenados na pasta [Datasets](https://github.com/RomarioAndrade/seguranca-publica-ml-fuzzy/tree/493f99e27d45b2a411968d59d4ab6c73e75bbb52/Datasets)
 
 ### Domínio Escolhido (A definir)
 - Trafico de drogras
 - Feminicídio
 - Milicias e Facções (variaveis ocultas)
-- 
+- Outros
 
 ### Datasets em Avaliação
 Lista de datasets a serem analizados se serão cruzados a outros 
@@ -42,6 +42,27 @@ Arquivos por ano (.xlsx, ~20-30 MB cada):
 - 2026  https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2026.xlsx/@@download/file   (parcial: jan-ago)
 
 ## 2. IBGE — população por ano + mulheres (Censo 2022):
+- https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2020/POP2020_20220905.xls
+- https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2021/POP2021_20240624.xls
+- https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Populacao_e_domicilios_Primeiros_resultados/Resultados_da_2a_apuracao_20231027/CD2022_Populacao_Coletada_Imputada_e_Total_Municipio_e_UF_20231222.xlsx
+- https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2024/POP2024_20241230.xls
+- https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2025/POP2025_20260828.xls
+- https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2026/estimativa_dou_2026.xlsx
+- https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/Agregados_por_Municipio_csv/Agregados_por_municipios_demografia_BR.zip
+- https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/dicionario_de_dados_agregados_por_setores_censitarios_20260520.xlsx
 
+## 3. CARTOGRAFIAS DA VIOLÊNCIA NA AMAZÔNIA — FBSP / Instituto Mãe Crioula
 
+- 3ª edição (dados de 2024, 260 municípios): tabelas_cartografias-violencia-amazonia-3ed.xlsx
+            -> Tabelas 13 a 21 = facções por município
+ 
+- 4ª edição (dados de 2025, 344 municípios) — necessária para estudar EXPANSÃO 2024 -> 2025
+            Relatório completo (PDF):
+            https://forumseguranca.org.br/wp-content/uploads/2025/11/cartografias-violencia-amazonia-2025.pdf
+            Sumário executivo (PDF):
+            https://forumseguranca.org.br/wp-content/uploads/2025/11/cartografias-violencia-amazonia-2025-sumario-executivo.pdf
+            Página especial (procurar o arquivo "tabelas ... 4ed.xlsx"):
+            https://forumseguranca.org.br/especial-cop30/
+            
+ 
 ## 3. IBGE — população, códigos e recorte da Amazônia Legal
