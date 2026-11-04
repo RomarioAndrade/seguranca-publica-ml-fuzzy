@@ -1,0 +1,345 @@
+estado,uf,municipio,faccoes,situacao,tipologia,n_faccoes,situacao_cod,municipio_vde_normalizado
+Acre,AC,Acrelândia,CV,Presença de uma facção,Rural,1,1,ACRELANDIA
+Acre,AC,Assis Brasil,CV - B13,Presença de duas ou mais facções,Rural,2,2,ASSIS BRASIL
+Acre,AC,Brasiléia,CV – PCC - B13,Presença de duas ou mais facções,Intermediário,3,2,BRASILEIA
+Acre,AC,Bujari,CV,Presença de uma facção,Rural,1,1,BUJARI
+Acre,AC,Capixaba,CV,Presença de uma facção,Rural,1,1,CAPIXABA
+Acre,AC,Cruzeiro do Sul,CV,Presença de uma facção,Urbano,1,1,CRUZEIRO DO SUL
+Acre,AC,Epitaciolândia,CV – PCC - B13,Presença de duas ou mais facções,Intermediário,3,2,EPITACIOLANDIA
+Acre,AC,Feijó,CV,Presença de uma facção,Intermediário,1,1,FEIJO
+Acre,AC,Jordão,CV,Presença de uma facção,Rural,1,1,JORDAO
+Acre,AC,Mâncio Lima,CV,Presença de uma facção,Rural,1,1,MANCIO LIMA
+Acre,AC,Manoel Urbano,CV,Presença de uma facção,Rural,1,1,MANOEL URBANO
+Acre,AC,Marechal Thaumaturgo,CV,Presença de uma facção,Rural,1,1,MARECHAL THAUMATURGO
+Acre,AC,Plácido de Castro,CV,Presença de uma facção,Rural,1,1,PLACIDO DE CASTRO
+Acre,AC,Porto Acre,CV,Presença de uma facção,Rural,1,1,PORTO ACRE
+Acre,AC,Porto Walter,CV,Presença de uma facção,Rural,1,1,PORTO WALTER
+Acre,AC,Rio Branco,CV - PCC - B13,Presença de duas ou mais facções,Urbano,3,2,RIO BRANCO
+Acre,AC,Rodrigues Alves,CV,Presença de uma facção,Rural,1,1,RODRIGUES ALVES
+Acre,AC,Santa Rosa do Purus,CV,Presença de uma facção,Rural,1,1,SANTA ROSA DO PURUS
+Acre,AC,Senador Guiomard,CV,Presença de uma facção,Intermediário,1,1,SENADOR GUIOMARD
+Acre,AC,Sena Madureira,CV – PCC - B13,Presença de duas ou mais facções,Intermediário,3,2,SENA MADUREIRA
+Acre,AC,Tarauacá,CV,Presença de uma facção,Intermediário,1,1,TARAUACA
+Acre,AC,Xapuri,CV,Presença de uma facção,Rural,1,1,XAPURI
+Amapá,AP,Calçoene,UCA - FTA,Presença de duas ou mais facções,Rural,2,2,CALCOENE
+Amapá,AP,Ferreira Gomes,FTA,Presença de uma facção,Intermediário,1,1,FERREIRA GOMES
+Amapá,AP,Laranjal do Jari,CV - UCA,Presença de duas ou mais facções,Urbano,2,2,LARANJAL DO JARI
+Amapá,AP,Macapá,CV - PCC - FTA - UCA,Presença de duas ou mais facções,Urbano,4,2,MACAPA
+Amapá,AP,Mazagão,FTA,Presença de uma facção,Rural,1,1,MAZAGAO
+Amapá,AP,Oiapoque,CV - FTA,Presença de duas ou mais facções,Intermediário,2,2,OIAPOQUE
+Amapá,AP,Pedra Branca do Amapari,FTA,Presença de duas ou mais facções,Rural,1,1,PEDRA BRANCA DO AMAPARI
+Amapá,AP,Porto Grande,CV,Presença de uma facção,Intermediário,1,1,PORTO GRANDE
+Amapá,AP,Santana,CV - FTA,Presença de duas ou mais facções,Urbano,2,2,SANTANA
+Amapá,AP,Tartarugalzinho,FTA,Presença de uma facção,Rural,1,1,TARTARUGALZINHO
+Amazonas,AM,Amanã,CV,Presença de uma facção,Rural,1,1,
+Amazonas,AM,Atalaia do Norte,CV,Presença de uma facção,Rural,1,1,ATALAIA DO NORTE
+Amazonas,AM,Barcelos,CV - Piratas dos Solimões,Presença de duas ou mais facções,Intermediário,2,2,BARCELOS
+Amazonas,AM,Benjamin Constant,CV,Presença de uma facção,Intermediário,1,1,BENJAMIN CONSTANT
+Amazonas,AM,Borba,CV,Presença de uma facção,Rural,1,1,BORBA
+Amazonas,AM,Carauari,CV,Presença de uma facção,Urbano,1,1,CARAUARI
+Amazonas,AM,Coari,PCC,Presença de uma facção,Urbano,1,1,COARI
+Amazonas,AM,Codajás,Piratas dos Solimões,Presença de uma facção,Intermediário,1,1,CODAJAS
+Amazonas,AM,Envira,CV,Presença de uma facção,Intermediário,1,1,ENVIRA
+Amazonas,AM,Guajará,CV,Presença de uma facção,Rural,1,1,GUAJARA
+Amazonas,AM,Iranduba,CV,Presença de uma facção,Intermediário,1,1,IRANDUBA
+Amazonas,AM,Itacoatiara,CV,Presença de uma facção,Urbano,1,1,ITACOATIARA
+Amazonas,AM,Itamarati,CV,Presença de uma facção,Rural,1,1,ITAMARATI
+Amazonas,AM,Japurá,CV - EMC,Presença de duas ou mais facções,Rural,2,2,JAPURA
+Amazonas,AM,Lábrea,CV,Presença de uma facção,Intermediário,1,1,LABREA
+Amazonas,AM,Manaus,CV,Presença de uma facção,Urbano,1,1,MANAUS
+Amazonas,AM,Maués,CV,Presença de uma facção,Rural,1,1,MAUES
+Amazonas,AM,Parintins,CV,Presença de uma facção,Urbano,1,1,PARINTINS
+Amazonas,AM,Rio Preto da Eva,CV,Presença de uma facção,Rural,1,1,RIO PRETO DA EVA
+Amazonas,AM,Santo Antônio do Iça,CV,Presença de uma facção,Intermediário,1,1,SANTO ANTONIO DO ICA
+Amazonas,AM,São Gabriel da Cachoeira,CV - ExFarc Acácio Medina,Presença de duas ou mais facções,Intermediário,2,2,SAO GABRIEL DA CACHOEIRA
+Amazonas,AM,São Paulo da Olivença,CV,Presença de uma facção,Rural,1,1,SAO PAULO DE OLIVENCA
+Amazonas,AM,Tabatinga,CV,Presença de uma facção,Urbano,1,1,TABATINGA
+Amazonas,AM,Tefé,CV - Piratas dos Solimões,Presença de duas ou mais facções,Urbano,2,2,TEFE
+Amazonas,AM,Tonantins,CV,Presença de uma facção,Rural,1,1,TONANTINS
+Maranhão,MA,Açailândia,CV,Presença de uma facção,Urbano,1,1,ACAILANDIA
+Maranhão,MA,Alto Alegre do Maranhão,B40- PCC,Presença de duas ou mais facções,Urbano,2,2,ALTO ALEGRE DO MARANHAO
+Maranhão,MA,Anajatuba,B40,Presença de uma facção,Rural,1,1,ANAJATUBA
+Maranhão,MA,Araguanã,B40,Presença de uma facção,Rural,1,1,ARAGUANA
+Maranhão,MA,Arari,B40,Presença de uma facção,Intermediário,1,1,ARARI
+Maranhão,MA,Bacabal,CV-B40-PCC,Presença de duas ou mais facções,Urbano,3,2,BACABAL
+Maranhão,MA,Bacabeira,CV – B40,Presença de duas ou mais facções,Rural,2,2,BACABEIRA
+Maranhão,MA,Bacuri,CV,Presença de uma facção,Rural,1,1,BACURI
+Maranhão,MA,Balsas,CV,Presença de uma facção,Urbano,1,1,BALSAS
+Maranhão,MA,Boa Vista do Gurupi,CV,Presença de uma facção,Rural,1,1,BOA VISTA DO GURUPI
+Maranhão,MA,Bom Jardim,PCM,Presença de uma facção,Rural,1,1,BOM JARDIM
+Maranhão,MA,Bom Jesus das Selvas,CV - PCC,Presença de duas ou mais facções,Intermediário,2,2,BOM JESUS DAS SELVAS
+Maranhão,MA,Buriticupu,B40,Presença de uma facção,Urbano,1,1,BURITICUPU
+Maranhão,MA,Cachoeira Grande,B40,Presença de uma facção,Rural,1,1,CACHOEIRA GRANDE
+Maranhão,MA,Cajapió,CV,Presença de uma facção,Rural,1,1,CAJAPIO
+Maranhão,MA,Cantanhede,CV,Presença de uma facção,Intermediário,1,1,CANTANHEDE
+Maranhão,MA,Cururupu,CV,Presença de uma facção,Intermediário,1,1,CURURUPU
+Maranhão,MA,Davinópolis,CV- PCC,Presença de duas ou mais facções,Urbano,2,2,DAVINOPOLIS
+Maranhão,MA,Estreito,PCC,Presença de uma facção,Urbano,1,1,ESTREITO
+Maranhão,MA,Gov. Edson Lobão,PCC,Presença de uma facção,Intermediário,1,1,GOVERNADOR EDISON LOBAO
+Maranhão,MA,Gov. Newton Bello,PCM,Presença de uma facção,Rural,1,1,GOVERNADOR NEWTON BELLO
+Maranhão,MA,Itapecuru Mirim,CV – PCC -B40/ADA,Presença de duas ou mais facções,Urbano,3,2,ITAPECURU MIRIM
+Maranhão,MA,Imperatriz,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,IMPERATRIZ
+Maranhão,MA,Itinga do Maranhão,CV,Presença de uma facção,Intermediário,1,1,ITINGA DO MARANHAO
+Maranhão,MA,Lagoa Grande do Maranhão,PCC,Presença de uma facção,Rural,1,1,LAGOA GRANDE DO MARANHAO
+Maranhão,MA,Matinha,CV,Presença de uma facção,Rural,1,1,MATINHA
+Maranhão,MA,Miranda do Norte,B40 - PCC,Presença de duas ou mais facções,Urbano,2,2,MIRANDA DO NORTE
+Maranhão,MA,Morros,B40,Presença de uma facção,Rural,1,1,MORROS
+Maranhão,MA,Olho D’Água das Cunhãs,CV - PCM,Presença de duas ou mais facções,Rural,2,2,OLHO D AGUA DAS CUNHAS
+Maranhão,MA,Palmeirândia,CV,Presença de uma facção,Rural,1,1,PALMEIRANDIA
+Maranhão,MA,Pedreiras,CV - PCM,Presença de duas ou mais facções,Urbano,2,2,PEDREIRAS
+Maranhão,MA,Pedro do Rosário,B40,Presença de uma facção,Rural,1,1,PEDRO DO ROSARIO
+Maranhão,MA,Peritoró,CV - PCM,Presença de duas ou mais facções,Rural,2,2,PERITORO
+Maranhão,MA,Pindaré-Mirim,CV - B40,Presença de duas ou mais facções,Intermediário,2,2,PINDARE MIRIM
+Maranhão,MA,Pinheiro,CV – B40 - PCC,Presença de duas ou mais facções,Urbano,3,2,PINHEIRO
+Maranhão,MA,Pio XII,PCC,Presença de uma facção,Intermediário,1,1,PIO XII
+Maranhão,MA,Presidente Juscelino,B40,Presença de uma facção,Rural,1,1,PRESIDENTE JUSCELINO
+Maranhão,MA,Raposa,B40,Presença de uma facção,Urbano,1,1,RAPOSA
+Maranhão,MA,Rosário,B40,Presença de uma facção,Urbano,1,1,ROSARIO
+Maranhão,MA,Santa Helena,CV,Presença de uma facção,Urbano,1,1,SANTA HELENA
+Maranhão,MA,Santa Inês,CV – B40,Presença de duas ou mais facções,Urbano,2,2,SANTA INES
+Maranhão,MA,Santa Luzia do Paruá,CV – B40 -PCC,Presença de duas ou mais facções,Intermediário,3,2,SANTA LUZIA DO PARUA
+Maranhão,MA,Santa Rita,B40,Presença de uma facção,Rural,1,1,SANTA RITA
+Maranhão,MA,São Bento,CV – B40,Presença de duas ou mais facções,Intermediário,2,2,SAO BENTO
+Maranhão,MA,São João do Paraíso,CV,Presença de uma facção,Rural,1,1,SAO JOAO DO PARAISO
+Maranhão,MA,São José de Ribamar,CV – B40 - PCM,Presença de duas ou mais facções,Urbano,3,2,SAO JOSE DE RIBAMAR
+Maranhão,MA,São Luís,CV – B40 - PCM,Presença de duas ou mais facções,Urbano,3,2,SAO LUIS
+Maranhão,MA,São Pedro da Água Branca,PCC,Presença de uma facção,Intermediário,1,1,SAO PEDRO DA AGUA BRANCA
+Maranhão,MA,Vargem Grande,PCC,Presença de uma facção,Intermediário,1,1,VARGEM GRANDE
+Maranhão,MA,Viana,CV – B40,Presença de duas ou mais facções,Intermediário,2,2,VIANA
+Maranhão,MA,Vitória do Mearim,PCC,Presença de uma facção,Intermediário,1,1,VITORIA DO MEARIM
+Maranhão,MA,Vitorino Freire,CV,Presença de uma facção,Rural,1,1,VITORINO FREIRE
+Maranhão,MA,Zé Doca,B40,Presença de uma facção,Urbano,1,1,ZE DOCA
+Mato Grosso,MT,Acorizal,CV,Presença de uma facção,Rural,1,1,ACORIZAL
+Mato Grosso,MT,Água Boa,CV,Presença de uma facção,Urbano,1,1,AGUA BOA
+Mato Grosso,MT,Alta Floresta,CV,Presença de uma facção,Urbano,1,1,ALTA FLORESTA
+Mato Grosso,MT,Alto Araguaia,CV,Presença de uma facção,Urbano,1,1,ALTO ARAGUAIA
+Mato Grosso,MT,Alto Boa Vista,CV,Presença de uma facção,Rural,1,1,ALTO BOA VISTA
+Mato Grosso,MT,Alto Garças,CV,Presença de uma facção,Intermediário,1,1,ALTO GARCAS
+Mato Grosso,MT,Alto Paraguai,Tropa do Castelar,Presença de uma facção,Rural,1,1,ALTO PARAGUAI
+Mato Grosso,MT,Apiacás,CV,Presença de uma facção,Rural,1,1,APIACAS
+Mato Grosso,MT,Araguaiana,PCC,Presença de uma facção,Rural,1,1,ARAGUAIANA
+Mato Grosso,MT,Arenápolis,CV,Presença de uma facção,Urbano,1,1,ARENAPOLIS
+Mato Grosso,MT,Aripuanã,CV,Presença de uma facção,Intermediário,1,1,ARIPUANA
+Mato Grosso,MT,Barra do Bugres,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,BARRA DO BUGRES
+Mato Grosso,MT,Cáceres,CV - PCC - B40,Presença de duas ou mais facções,Urbano,3,2,CACERES
+Mato Grosso,MT,Campinápolis,CV,Presença de uma facção,Rural,1,1,CAMPINAPOLIS
+Mato Grosso,MT,Campo Novo do Parecis,CV,Presença de uma facção,Rural,1,1,CAMPO NOVO DO PARECIS
+Mato Grosso,MT,Campos de Júlio,CV,Presença de uma facção,Rural,1,1,CAMPOS DE JULIO
+Mato Grosso,MT,Canabrava do Norte,CV,Presença de uma facção,Rural,1,1,CANABRAVA DO NORTE
+Mato Grosso,MT,Canarana,CV,Presença de uma facção,Intermediário,1,1,CANARANA
+Mato Grosso,MT,Carlinda,CV,Presença de uma facção,Rural,1,1,CARLINDA
+Mato Grosso,MT,Castanheira,CV,Presença de uma facção,Rural,1,1,CASTANHEIRA
+Mato Grosso,MT,Chapada dos Guimarães,CV,Presença de uma facção,Rural,1,1,CHAPADA DOS GUIMARAES
+Mato Grosso,MT,Cocalinho,CV,Presença de uma facção,Rural,1,1,COCALINHO
+Mato Grosso,MT,Colíder,CV,Presença de uma facção,Rural,1,1,COLIDER
+Mato Grosso,MT,Colniza,PCC,Presença de uma facção,Urbano,1,1,COLNIZA
+Mato Grosso,MT,Comodoro,CV,Presença de uma facção,Rural,1,1,COMODORO
+Mato Grosso,MT,Confresa,CV,Presença de uma facção,Intermediário,1,1,CONFRESA
+Mato Grosso,MT,Cuiabá,CV - B40,Presença de duas ou mais facções,Urbano,2,2,CUIABA
+Mato Grosso,MT,Curvelândia,CV,Presença de uma facção,Rural,1,1,CURVELANDIA
+Mato Grosso,MT,Diamantino,CV,Presença de uma facção,Intermediário,1,1,DIAMANTINO
+Mato Grosso,MT,Dom Aquino,PCC,Presença de uma facção,Rural,1,1,DOM AQUINO
+Mato Grosso,MT,Feliz Natal,PCC,Presença de uma facção,Rural,1,1,FELIZ NATAL
+Mato Grosso,MT,General Carneiro,CV,Presença de uma facção,Rural,1,1,GENERAL CARNEIRO
+Mato Grosso,MT,Glória D’Oeste,CV,Presença de uma facção,Rural,1,1,GLORIA D OESTE
+Mato Grosso,MT,Guarantã do Norte,CV,Presença de uma facção,Intermediário,1,1,GUARANTA DO NORTE
+Mato Grosso,MT,Guiratinga,CV,Presença de uma facção,Intermediário,1,1,GUIRATINGA
+Mato Grosso,MT,Ipiranga do Norte,CV,Presença de uma facção,Rural,1,1,IPIRANGA DO NORTE
+Mato Grosso,MT,Itanhangá,CV – Tropa do Castelar,Presença de duas ou mais facções,Rural,2,2,ITANHANGA
+Mato Grosso,MT,Itaúba,CV,Presença de uma facção,Intermediário,1,1,ITAUBA
+Mato Grosso,MT,Itiquira,CV,Presença de uma facção,Rural,1,1,ITIQUIRA
+Mato Grosso,MT,Jaciara,PCC,Presença de uma facção,Urbano,1,1,JACIARA
+Mato Grosso,MT,Juína,CV,Presença de uma facção,Urbano,1,1,JUINA
+Mato Grosso,MT,Juruena,CV - PCC,Presença de duas ou mais facções,Rural,2,2,JURUENA
+Mato Grosso,MT,Lambari D’Oeste,CV,Presença de uma facção,Rural,1,1,LAMBARI D OESTE
+Mato Grosso,MT,Lucas do Rio Verde,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,LUCAS DO RIO VERDE
+Mato Grosso,MT,Luciara,CV,Presença de uma facção,Rural,1,1,LUCIARA
+Mato Grosso,MT,Marcelândia,CV,Presença de uma facção,Rural,1,1,MARCELANDIA
+Mato Grosso,MT,Mirassol D’Oeste,CV,Presença de uma facção,Urbano,1,1,MIRASSOL D OESTE
+Mato Grosso,MT,Nobres,CV,Presença de uma facção,Rural,1,1,NOBRES
+Mato Grosso,MT,Nortelândia,CV,Presença de uma facção,Urbano,1,1,NORTELANDIA
+Mato Grosso,MT,Nova Bandeirantes,CV,Presença de uma facção,Rural,1,1,NOVA BANDEIRANTES
+Mato Grosso,MT,Nova Canaã do Norte,CV,Presença de uma facção,Rural,1,1,NOVA CANAA DO NORTE
+Mato Grosso,MT,Nova Mariláóndia,CV - PCC,Presença de duas ou mais facções,Rural,2,2,NOVA MARILANDIA
+Mato Grosso,MT,Nova Maringá,Tropa do Castelar,Presença de uma facção,Rural,1,1,NOVA MARINGA
+Mato Grosso,MT,Nova Monte Verde,CV,Presença de uma facção,Rural,1,1,NOVA MONTE VERDE
+Mato Grosso,MT,Nova Mutum,CV,Presença de uma facção,Urbano,1,1,NOVA MUTUM
+Mato Grosso,MT,Nova Nazaré,CV,Presença de uma facção,Rural,1,1,NOVA NAZARE
+Mato Grosso,MT,Nova Olímpia,CV,Presença de uma facção,Urbano,1,1,NOVA OLIMPIA
+Mato Grosso,MT,Nova Ubiratã,CV,Presença de uma facção,Rural,1,1,NOVA UBIRATA
+Mato Grosso,MT,Nova Xavantina,CV,Presença de uma facção,Urbano,1,1,NOVA XAVANTINA
+Mato Grosso,MT,Novo São Joaquim,CV,Presença de uma facção,Rural,1,1,NOVO SAO JOAQUIM
+Mato Grosso,MT,Paranatinga,CV,Presença de uma facção,Intermediário,1,1,PARANATINGA
+Mato Grosso,MT,Pedra Preta,CV,Presença de uma facção,Intermediário,1,1,PEDRA PRETA
+Mato Grosso,MT,Peixoto de Azevedo,CV,Presença de uma facção,Intermediário,1,1,PEIXOTO DE AZEVEDO
+Mato Grosso,MT,Poconé,CV,Presença de uma facção,Intermediário,1,1,POCONE
+Mato Grosso,MT,Pontal do Araguaia,CV,Presença de uma facção,Urbano,1,1,PONTAL DO ARAGUAIA
+Mato Grosso,MT,Ponte Branca,CV,Presença de uma facção,Rural,1,1,PONTE BRANCA
+Mato Grosso,MT,Pontes e Lacerda,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,PONTES E LACERDA
+Mato Grosso,MT,Porto Alegre do Norte,CV,Presença de uma facção,Rural,1,1,PORTO ALEGRE DO NORTE
+Mato Grosso,MT,Porto Esperidião,CV,Presença de uma facção,Rural,1,1,PORTO ESPERIDIAO
+Mato Grosso,MT,Poxoreú,CV,Presença de uma facção,Rural,1,1,POXOREU
+Mato Grosso,MT,Primavera do Leste,CV,Presença de uma facção,Urbano,1,1,PRIMAVERA DO LESTE
+Mato Grosso,MT,Querência,CV,Presença de uma facção,Rural,1,1,QUERENCIA
+Mato Grosso,MT,Reserva do Cabaçal,CV,Presença de uma facção,Rural,1,1,RESERVA DO CABACAL
+Mato Grosso,MT,Ribeirão Cascalheira,CV,Presença de uma facção,Rural,1,1,RIBEIRAO CASCALHEIRA
+Mato Grosso,MT,Rondonópolis,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,RONDONOPOLIS
+Mato Grosso,MT,Rosário D’Oeste,CV,Presença de uma facção,Rural,1,1,ROSARIO OESTE
+Mato Grosso,MT,Santo Antônio do Leste,CV,Presença de uma facção,Rural,1,1,SANTO ANTONIO DO LESTE
+Mato Grosso,MT,Santo Antônio do Leverger,CV,Presença de uma facção,Rural,1,1,SANTO ANTONIO DO LEVERGER
+Mato Grosso,MT,São Felix do Araguaia,CV,Presença de uma facção,Rural,1,1,SAO FELIX DO ARAGUAIA
+Mato Grosso,MT,São José do Xingu,CV,Presença de uma facção,Rural,1,1,SAO JOSE DO XINGU
+Mato Grosso,MT,São José dos Quatros Marcos,CV,Presença de uma facção,Intermediário,1,1,SAO JOSE DOS QUATRO MARCOS
+Mato Grosso,MT,São Pedro do Cipa,CV,Presença de uma facção,Rural,1,1,SAO PEDRO DA CIPA
+Mato Grosso,MT,Sepezal,CV,Presença de uma facção,Urbano,1,1,SAPEZAL
+Mato Grosso,MT,Sinop,CV – Tropa do Castelar,Presença de duas ou mais facções,Urbano,2,2,SINOP
+Mato Grosso,MT,Sorriso,CV - Tropa do Castelar,Presença de duas ou mais facções,Urbano,2,2,SORRISO
+Mato Grosso,MT,Tangará da Serra,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,TANGARA DA SERRA
+Mato Grosso,MT,Tapurah,CV,Presença de uma facção,Rural,1,1,TAPURAH
+Mato Grosso,MT,Terra Nova do Norte,CV,Presença de uma facção,Rural,1,1,TERRA NOVA DO NORTE
+Mato Grosso,MT,Torixoreú,CV,Presença de uma facção,Rural,1,1,TORIXOREU
+Mato Grosso,MT,Várzea Grande,CV – B40,Presença de duas ou mais facções,Urbano,2,2,VARZEA GRANDE
+Mato Grosso,MT,Vila Bela da Santíssima Trindade,CV - PCC,Presença de duas ou mais facções,Rural,2,2,VILA BELA DA SANTISSIMA TRINDADE
+Mato Grosso,MT,Vila Rica,CV,Presença de uma facção,Intermediário,1,1,VILA RICA
+Pará,PA,Abaetetuba,CV,Presença de uma facção,Urbano,1,1,ABAETETUBA
+Pará,PA,Acará,CV,Presença de uma facção,Rural,1,1,ACARA
+Pará,PA,Afuá,CV,Presença de uma facção,Rural,1,1,AFUA
+Pará,PA,Água Azul do Norte,PCC,Presença de uma facção,Urbano,1,1,AGUA AZUL DO NORTE
+Pará,PA,Alenquer,CV,Presença de uma facção,Urbano,1,1,ALENQUER
+Pará,PA,Almeirim,CV,Presença de uma facção,Intermediário,1,1,ALMEIRIM
+Pará,PA,Altamira,CV – PCC -CCA,Presença de duas ou mais facções,Urbano,3,2,ALTAMIRA
+Pará,PA,Anajás,CV,Presença de uma facção,Rural,1,1,ANAJAS
+Pará,PA,Ananindeua,CV,Presença de uma facção,Urbano,1,1,ANANINDEUA
+Pará,PA,Augusto Correa,CV,Presença de uma facção,Rural,1,1,AUGUSTO CORREA
+Pará,PA,Baião,CV,Presença de uma facção,Rural,1,1,BAIAO
+Pará,PA,Barcarena,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,BARCARENA
+Pará,PA,Belém,CV,Presença de uma facção,Urbano,1,1,BELEM
+Pará,PA,Benevides,CV,Presença de uma facção,Urbano,1,1,BENEVIDES
+Pará,PA,Bragança,CV,Presença de uma facção,Urbano,1,1,BRAGANCA
+Pará,PA,Brasil Novo,CV - CCA,Presença de duas ou mais facções,Rural,2,2,BRASIL NOVO
+Pará,PA,Breu Branco,CV,Presença de uma facção,Urbano,1,1,BREU BRANCO
+Pará,PA,Breves,CV,Presença de uma facção,Urbano,1,1,BREVES
+Pará,PA,Bujaru,CV,Presença de uma facção,Rural,1,1,BUJARU
+Pará,PA,Cachoeira do Arari,CV,Presença de uma facção,Rural,1,1,CACHOEIRA DO ARARI
+Pará,PA,Cametá,CV,Presença de uma facção,Urbano,1,1,CAMETA
+Pará,PA,Canaã dos Carajás,CV – PCC,Presença de duas ou mais facções,Intermediário,2,2,CANAA DOS CARAJAS
+Pará,PA,Capanema,CV,Presença de uma facção,Urbano,1,1,CAPANEMA
+Pará,PA,Capitão Poço,CV,Presença de uma facção,Rural,1,1,CAPITAO POCO
+Pará,PA,Castanhal,CV-PCC-GDE,Presença de duas ou mais facções,Urbano,3,2,CASTANHAL
+Pará,PA,Chaves,CV - FTA,Presença de duas ou mais facções,Rural,2,2,CHAVES
+Pará,PA,Colares,CV,Presença de uma facção,Rural,1,1,COLARES
+Pará,PA,Conceição do Araguaia,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,CONCEICAO DO ARAGUAIA
+Pará,PA,Concórdia do Pará,CV,Presença de uma facção,Intermediário,1,1,CONCORDIA DO PARA
+Pará,PA,Cumaru do Norte,CV,Presença de uma facção,Rural,1,1,CUMARU DO NORTE
+Pará,PA,Curralinho,CV,Presença de uma facção,Rural,1,1,CURRALINHO
+Pará,PA,Curuçá,CV,Presença de uma facção,Rural,1,1,CURUCA
+Pará,PA,Dom Eliseu,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,DOM ELISEU
+Pará,PA,Faro,CV,Presença de uma facção,Rural,1,1,FARO
+Pará,PA,Gurupá,CV,Presença de uma facção,Rural,1,1,GURUPA
+Pará,PA,Igarapé-Miri,CV,Presença de uma facção,Intermediário,1,1,IGARAPE MIRI
+Pará,PA,Igarapé-Açú,CV,Presença de uma facção,Intermediário,1,1,IGARAPE ACU
+Pará,PA,Ipixuna do Pará,CV,Presença de uma facção,Rural,1,1,IPIXUNA DO PARA
+Pará,PA,Irituia,CV,Presença de uma facção,Rural,1,1,IRITUIA
+Pará,PA,Itaituba,CV,Presença de uma facção,Urbano,1,1,ITAITUBA
+Pará,PA,Itupiranga,PCC,Presença de uma facção,Urbano,1,1,ITUPIRANGA
+Pará,PA,Jacareacanga,CV,Presença de uma facção,Rural,1,1,JACAREACANGA
+Pará,PA,Jacundá,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,JACUNDA
+Pará,PA,Juruti,CV,Presença de uma facção,Intermediário,1,1,JURUTI
+Pará,PA,Marabá,CV – PCC - CCA,Presença de duas ou mais facções,Urbano,3,2,MARABA
+Pará,PA,Maracanã,CV,Presença de uma facção,Rural,1,1,MARACANA
+Pará,PA,Marapanim,CV,Presença de uma facção,Rural,1,1,MARAPANIM
+Pará,PA,Marituba,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,MARITUBA
+Pará,PA,Mocajuba,CV – Bonde 777,Presença de duas ou mais facções,Intermediário,2,2,MOCAJUBA
+Pará,PA,Moju,CV,Presença de uma facção,Rural,1,1,MOJU
+Pará,PA,Monte Alegre,CV,Presença de uma facção,Urbano,1,1,MONTE ALEGRE
+Pará,PA,Muaná,CV,Presença de uma facção,Rural,1,1,MUANA
+Pará,PA,Nova Esperança do Piriá,CV,Presença de uma facção,Rural,1,1,NOVA ESPERANCA DO PIRIA
+Pará,PA,Novo Progresso,CV,Presença de uma facção,Intermediário,1,1,NOVO PROGRESSO
+Pará,PA,Novo Repartimento,CV,Presença de uma facção,Intermediário,1,1,NOVO REPARTIMENTO
+Pará,PA,Óbidos,CV,Presença de uma facção,Urbano,1,1,OBIDOS
+Pará,PA,Oeiras do Pará,CV,Presença de uma facção,Rural,1,1,OEIRAS DO PARA
+Pará,PA,Ourém,CV,Presença de uma facção,Rural,1,1,OUREM
+Pará,PA,Ourilândia do Norte,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,OURILANDIA DO NORTE
+Pará,PA,Pacajá,PCC,Presença de uma facção,Rural,1,1,PACAJA
+Pará,PA,Ponta de Pedras,CV,Presença de uma facção,Rural,1,1,PONTA DE PEDRAS
+Pará,PA,Portel,CV,Presença de uma facção,Intermediário,1,1,PORTEL
+Pará,PA,Prainha,CV,Presença de uma facção,Rural,1,1,PRAINHA
+Pará,PA,Parauapebas,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,PARAUAPEBAS
+Pará,PA,Redenção,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,REDENCAO
+Pará,PA,Rio Maria,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,RIO MARIA
+Pará,PA,Rurópolis,CV,Presença de uma facção,Rural,1,1,RUROPOLIS
+Pará,PA,Salinópolis,CV,Presença de uma facção,Urbano,1,1,SALINOPOLIS
+Pará,PA,Salvaterra,CV,Presença de uma facção,Rural,1,1,SALVATERRA
+Pará,PA,Santa Bárbara do Pará,CV,Presença de uma facção,Rural,1,1,SANTA BARBARA DO PARA
+Pará,PA,Santa Izabel do Pará,CV,Presença de uma facção,Urbano,1,1,SANTA IZABEL DO PARA
+Pará,PA,Santa Luzia do Pará,CV,Presença de uma facção,Rural,1,1,SANTA LUZIA DO PARA
+Pará,PA,Santarém,CV,Presença de uma facção,Urbano,1,1,SANTAREM
+Pará,PA,Santo Antônio do Tauá,CV,Presença de uma facção,Rural,1,1,SANTO ANTONIO DO TAUA
+Pará,PA,São Domingos do Capim,CV,Presença de uma facção,Rural,1,1,SAO DOMINGOS DO CAPIM
+Pará,PA,São Félix do Xingu,CV,Presença de uma facção,Urbano,1,1,SAO FELIX DO XINGU
+Pará,PA,São João de Pirabas,CV – BDM,Presença de duas ou mais facções,Intermediário,2,2,SAO JOAO DE PIRABAS
+Pará,PA,São Sebastião da Boa Vista,CV,Presença de uma facção,Rural,1,1,SAO SEBASTIAO DA BOA VISTA
+Pará,PA,Senador José Porfirio,CCA - FTA,Presença de duas ou mais facções,Rural,2,2,SENADOR JOSE PORFIRIO
+Pará,PA,Soure,CV,Presença de uma facção,Urbano,1,1,SOURE
+Pará,PA,Tailândia,CV,Presença de uma facção,Urbano,1,1,TAILANDIA
+Pará,PA,Terra Alta,CV,Presença de uma facção,Rural,1,1,TERRA ALTA
+Pará,PA,Terra Santa,CV,Presença de uma facção,Urbano,1,1,TERRA SANTA
+Pará,PA,Tomé-açu,CV,Presença de uma facção,Urbano,1,1,TOME ACU
+Pará,PA,Tracuateua,CV,Presença de uma facção,Rural,1,1,TRACUATEUA
+Pará,PA,Tucumã,CV,Presença de uma facção,Urbano,1,1,TUCUMA
+Pará,PA,Tucuruí,CV,Presença de uma facção,Urbano,1,1,TUCURUI
+Pará,PA,Ulianópolis,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,ULIANOPOLIS
+Pará,PA,Uruará,CV,Presença de uma facção,Intermediário,1,1,URUARA
+Pará,PA,Vigia,CV,Presença de uma facção,Urbano,1,1,VIGIA
+Pará,PA,Xinguara,CV – PCC - ADE,Presença de duas ou mais facções,Urbano,3,2,XINGUARA
+Rondônia,RO,Alta Floresta D´Oeste,CV,Presença de uma facção,Intermediário,1,1,ALTA FLORESTA D OESTE
+Rondônia,RO,Cabixi,CV -PCC,Presença de duas ou mais facções,Rural,2,2,CABIXI
+Rondônia,RO,Cerejeiras,PCC,Presença de uma facção,Urbano,1,1,CEREJEIRAS
+Rondônia,RO,Colorado do Oeste,PCC,Presença de uma facção,Intermediário,1,1,COLORADO DO OESTE
+Rondônia,RO,Corumbiara,CV,Presença de uma facção,Rural,1,1,CORUMBIARA
+Rondônia,RO,Costa Marques,CV -PCC,Presença de duas ou mais facções,Rural,2,2,COSTA MARQUES
+Rondônia,RO,Espiguão D’Oeste,CV -PCC,Presença de duas ou mais facções,Intermediário,2,2,ESPIGAO D OESTE
+Rondônia,RO,Guajará-Mirim,CV,Presença de uma facção,Urbano,1,1,GUAJARA MIRIM
+Rondônia,RO,Jaru,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,JARU
+Rondônia,RO,Ji-Paraná,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,JI PARANA
+Rondônia,RO,Nova Brasilândia D´Oeste,PCC,Presença de uma facção,Rural,1,1,NOVA BRASILANDIA D OESTE
+Rondônia,RO,Nova Mamoré,CV -PCC,Presença de duas ou mais facções,Rural,2,2,NOVA MAMORE
+Rondônia,RO,Ouro Preto do Oeste,PCC,Presença de uma facção,Urbano,1,1,OURO PRETO DO OESTE
+Rondônia,RO,Pimenta Bueno,CV,Presença de uma facção,Urbano,1,1,PIMENTA BUENO
+Rondônia,RO,Pimenteira do Oeste,CV,Presença de uma facção,Rural,1,1,PIMENTEIRAS DO OESTE
+Rondônia,RO,Porto Velho,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,PORTO VELHO
+Rondônia,RO,Primavera de Rondônia,PCC,Presença de uma facção,Rural,1,1,PRIMAVERA DE RONDONIA
+Rondônia,RO,Rolim de Moura,PCC,Presença de uma facção,Urbano,1,1,ROLIM DE MOURA
+Rondônia,RO,São Francisco do Guaporé,CV - PCC,Presença de duas ou mais facções,Rural,2,2,SAO FRANCISCO DO GUAPORE
+Rondônia,RO,Seringueiras,CV - PCC,Presença de duas ou mais facções,Rural,2,2,SERINGUEIRAS
+Rondônia,RO,Vilhena,CV - PCC,Presença de duas ou mais facções,Urbano,2,2,VILHENA
+Roraima,RR,Alto Alegre,CV - PCC,Presença de duas ou mais facções,Rural,2,2,ALTO ALEGRE
+Roraima,RR,Amajari,PCC,Presença de uma facção,Rural,1,1,AMAJARI
+Roraima,RR,Boa vista,PCC- CV -TREM DO ARAGUÁ,Presença de duas ou mais facções,Urbano,3,2,BOA VISTA
+Roraima,RR,Bonfim,CV-PCC,Presença de duas ou mais facções,Rural,2,2,BONFIM
+Roraima,RR,Cantá,PCC,Presença de uma facção,Rural,1,1,CANTA
+Roraima,RR,Caracaraí,CV-PCC,Presença de duas ou mais facções,Rural,2,2,CARACARAI
+Roraima,RR,Caroebe,PCC,Presença de uma facção,Rural,1,1,CAROEBE
+Roraima,RR,Iracema,PCC - CV,Presença de duas ou mais facções,Rural,2,2,IRACEMA
+Roraima,RR,Mucajaí,PCC- CV -TREM DO ARAGUÁ,Presença de duas ou mais facções,Rural,3,2,MUCAJAI
+Roraima,RR,Normandia,PCC,Presença de uma facção,Rural,1,1,NORMANDIA
+Roraima,RR,Pacaraima,CV-PCC-TREM DO ARAGUÁ,Presença de duas ou mais facções,Rural,3,2,PACARAIMA
+Roraima,RR,Rorainópolis,CV- PCC,Presença de duas ou mais facções,Rural,2,2,RORAINOPOLIS
+Roraima,RR,Uiramutã,PCC,Presença de uma facção,Rural,1,1,UIRAMUTA
+Tocantins,TO,Almas,ADE,Presença de uma facção,Intermediário,1,1,ALMAS
+Tocantins,TO,Alvorada,CV,Presença de uma facção,Intermediário,1,1,ALVORADA
+Tocantins,TO,Araguaína,PCC-CV,Presença de duas ou mais facções,Urbano,2,2,ARAGUAINA
+Tocantins,TO,Araguatins,PCC,Presença de uma facção,Intermediário,1,1,ARAGUATINS
+Tocantins,TO,Augustinópois,CV,Presença de uma facção,Intermediário,1,1,AUGUSTINOPOLIS
+Tocantins,TO,Cariri do Tocantins,PCC,Presença de uma facção,Rural,1,1,CARIRI DO TOCANTINS
+Tocantins,TO,Davinópolis do Tocantins,PCC - CV,Presença de duas ou mais facções,Rural,2,2,DIVINOPOLIS DO TOCANTINS
+Tocantins,TO,Formoso do Araguaia,PCC,Presença de uma facção,Intermediário,1,1,FORMOSO DO ARAGUAIA
+Tocantins,TO,Gurupi,CV,Presença de duas ou mais facções,Urbano,1,1,GURUPI
+Tocantins,TO,Jaú do Tocantins,CV,Presença de uma facção,Rural,1,1,JAU DO TOCANTINS
+Tocantins,TO,Miracema do Tocantins,CV,Presença de uma facção,Intermediário,1,1,MIRACEMA DO TOCANTINS
+Tocantins,TO,Palmas,PCC-CV,Presença de duas ou mais facções,Urbano,2,2,PALMAS
+Tocantins,TO,Paraíso do Tocantins,PCC,Presença de uma facção,Urbano,1,1,PARAISO DO TOCANTINS
+Tocantins,TO,Porto Nacional,CV,Presença de uma facção,Urbano,1,1,PORTO NACIONAL
+Tocantins,TO,São Bento do Tocantins,CV,Presença de uma facção,Rural,1,1,SAO BENTO DO TOCANTINS
+Tocantins,TO,Taguatinga,Bonde do Cangaço,Presença de uma facção,Rural,1,1,TAGUATINGA
+Tocantins,TO,Xambioá,CV,Presença de uma facção,Intermediário,1,1,XAMBIOA
