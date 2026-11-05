@@ -2,6 +2,7 @@
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[brazilian]{babel}
 \usepackage[margin=2cm]{geometry}
 \usepackage{graphicx,booktabs,amsmath,hyperref}
@@ -20,8 +21,8 @@ Combinamos as estatísticas de violência do SINESP VDE (2020--2023) e a popula�
 inferi-la nos 808 municípios dos estados da Amazônia Legal, usando como referência o
 \emph{Cartografias da Violência na Amazônia} de 2024. A rede bayesiana diagnóstica atinge
 AUC de 0,81. Sem usar nenhum dado de 2025, a probabilidade calculada antecipa quais municípios
-passaram a ter facção segundo a edição de 2025 (AUC 0,77): na prioridade fuzzy baixa, 13\%
-entraram; na alta, 45\%.
+passaram a ter facção segundo a edição de 2025 (AUC 0,76): na prioridade fuzzy baixa, 13\%
+entraram; na alta, 44\%.
 \end{abstract}
 
 \section{Introdução e dados}
@@ -38,10 +39,10 @@ vêm bem depois (0,027).
 \begin{table}[h]\centering\small
 \begin{tabular}{lccc}\toprule
 Modelo & Treino & Teste & Bal.\\\midrule
-ID3 própria, sem poda & 0,874 & 0,748 & 0,687\\
-ID3 própria, prof. 3 & 0,824 & 0,786 & 0,709\\
-sklearn, prof. 4 & 0,804 & 0,786 & 0,683\\\bottomrule
-\end{tabular}\caption{Validação cruzada 5-fold.}\end{table}
+ID3 própria, sem poda & 0,874 & 0,749 & 0,687\\
+ID3 própria, prof. 3 & 0,824 & 0,786 & 0,708\\
+sklearn, prof. 4 & 0,799 & 0,782 & 0,679\\\bottomrule
+\end{tabular}\caption{Validação cruzada 5-fold; os tercis das taxas são calculados só com o treino de cada dobra.}\end{table}
 
 \textbf{Monotonicidade.} A regra ``município pequeno $\Rightarrow$ sem facção'' cobre 267
 municípios e acerta 89,9\%. Acrescentando o fato ``fica no Acre'' ou ``em Roraima'', a conclusão
@@ -66,7 +67,7 @@ passaram de domínio para disputa, e 45 ``saíram'' da lista, o que sugere mudan
 
 \section{Etapa 4 — MLE, MAP, Naive Bayes e EM}
 No Acre, $\hat\theta_{MLE}=1{,}0$ e $\hat\theta_{MAP}=0{,}958$. O Naive Bayes do zero acerta
-77,4\% (0,738 balanceada). O EM com $K=3$ na contagem de homicídios produz grupos que acompanham
+77,2\% (0,737 balanceada). O EM com $K=3$ na contagem de homicídios produz grupos que acompanham
 o Cartografias (1,7\% em disputa no grupo menos violento, 29\% no mais violento). Com a taxa, a
 correspondência é mais fraca: a facção está ligada ao volume de violência, não só à intensidade.
 Foi preciso um piso de variância para evitar o colapso da componente dos municípios sem homicídio.
@@ -79,26 +80,38 @@ facção, porte e fronteira são independentes; dado que há facção, ser peque
 $P(\text{fronteira})$ de 0,61 (grande) para 0,96. Nos dados, porte e fronteira têm correlação 0,21:
 a suposição é aproximada. Como classificador, a rede tem AUC de 0,81.
 
+\textbf{Validação geográfica.} Treinando com 8 estados e testando no 9º, a AUC geral fica em 0,80.
+A rede ordena bem os municípios em TO (0,94), AP, MA e PA, mas mal em RO (0,58), RR e AM, e erra o
+\emph{nível} onde a facção é quase universal: no Acre (100\%) e em Roraima (93\%) a probabilidade
+média prevista é cerca de 0,47, porque \texttt{FRONT} só distingue MA e TO dos demais estados.
+A rede serve para ordenar municípios num estado conhecido, não para estimar o nível num estado novo.
+
+\textbf{Sensibilidade ao rótulo.} Sem os 45 municípios que ``saíram'' da lista em 2025, a AUC sobe para
+0,83; a rede já os via com probabilidade intermediária (0,40, contra 0,58 dos que têm facção nas duas
+edições), o que sugere erro de registro ou mudança de método. Com o rótulo ``facção em 2024 ou 2025'',
+a AUC é 0,82. As conclusões não dependem do ruído do rótulo.
+
 \section{Etapa 6 — Fuzzy, integração e validação com 2025}
 \begin{table}[h]\centering\small
 \begin{tabular}{lccc}\toprule
 Prioridade & Munic. & Facção 2024 & Entrada 2025$^*$\\\midrule
-Baixa & 406 & 12,8\% & 12,7\%\\
-Média & 164 & 36,6\% & 41,3\%\\
-Alta & 238 & 61,8\% & 45,1\%\\\bottomrule
+Baixa & 404 & 12,9\% & 13,1\%\\
+Média & 165 & 37,6\% & 40,8\%\\
+Alta & 239 & 60,7\% & 43,6\%\\\bottomrule
 \end{tabular}\caption{$^*$Entre os municípios sem facção em 2024. AUC da probabilidade bayesiana
-para prever a entrada: 0,765.}\end{table}
+para prever a entrada: 0,764 (probabilidades fora da dobra).}\end{table}
 \textbf{Com os dados de 2024.} Trocar os atributos de 2021--23 por 2022--24 não melhora a previsão da
 entrada em 2025 (AUC 0,754 nas duas janelas). Municípios com salto de homicídios em 2024 entraram
 mais (31\% contra 21\%), mas o salto de 2023 tem o mesmo efeito (32\% contra 21\%): é sinal de
 município violento, não da chegada da facção. O padrão de Iranduba não se confirma na escala regional.
-\begin{figure}[h]\centering\includegraphics[width=\columnwidth]{figuras/etapa6_fuzzy_vs_rigido.png}
+\begin{figure}[h]\centering\includegraphics[width=\columnwidth]{../figuras/etapa6_fuzzy_vs_rigido.png}
 \caption{Saída fuzzy suave × limiar rígido.}\end{figure}
 
 \section{Conclusão e limitações}
 % TODO: "sem registro" não é ausência certa; mudanças entre edições refletem também o método;
 % a violência indica onde, não quando (teste da janela 2022--24 e do salto de 2024);
-% divergências internas do relatório (AP, PA, TO); MA entra inteiro; ética de rotular municípios.
+% divergências internas do relatório (AP, PA, TO); MA entra inteiro; ética de rotular municípios;
+% FRONT por estado: a rede não acerta o nível de facção num estado que não viu (AC, RR).
 
 \begin{thebibliography}{9}
 \bibitem{aima} S. Russell e P. Norvig. \emph{Artificial Intelligence: A Modern Approach}, 4. ed. Pearson, 2020.

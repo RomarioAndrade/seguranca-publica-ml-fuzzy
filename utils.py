@@ -70,6 +70,24 @@ def montar_tabela(base: pd.DataFrame | None = None) -> pd.DataFrame:
     return d
 
 
+TAXAS_TERCIL = {"TXH": "taxa_homicidio_2021_23", "TXT": "taxa_tent_homicidio_2021_23"}
+
+
+def tercis_do_treino(d: pd.DataFrame, X: pd.DataFrame, tr) -> pd.DataFrame:
+    """Refaz TXH e TXT de X com os cortes dos tercis calculados só nas linhas de treino.
+
+    Os tercis de montar_tabela usam a base inteira; na validação cruzada isso deixa o
+    teste influenciar os cortes. Aqui o teste recebe os cortes do treino.
+    tr: posições (como as de StratifiedKFold.split) das linhas de treino em d.
+    """
+    X = X.copy()
+    for nome, col in TAXAS_TERCIL.items():
+        if nome in X:
+            cortes = np.quantile(d[col].values[tr], [1 / 3, 2 / 3])
+            X[nome] = np.digitize(d[col].values, cortes, right=True)
+    return X
+
+
 def atributos_numericos_log(d: pd.DataFrame, anos=(2020, 2021, 2022)) -> pd.DataFrame:
     """log(população) + contagens anuais em log(1+x) para as Etapas 2 e 4."""
     eventos = ["homicidio", "tent_homicidio", "mortes_esclarecer", "latrocinio", "mandados"]
