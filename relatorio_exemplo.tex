@@ -88,18 +88,23 @@ Média & 164 & 36,6\% & 41,3\%\\
 Alta & 238 & 61,8\% & 45,1\%\\\bottomrule
 \end{tabular}\caption{$^*$Entre os municípios sem facção em 2024. AUC da probabilidade bayesiana
 para prever a entrada: 0,765.}\end{table}
+\textbf{Com os dados de 2024.} Trocar os atributos de 2021--23 por 2022--24 não melhora a previsão da
+entrada em 2025 (AUC 0,754 nas duas janelas). Municípios com salto de homicídios em 2024 entraram
+mais (31\% contra 21\%), mas o salto de 2023 tem o mesmo efeito (32\% contra 21\%): é sinal de
+município violento, não da chegada da facção. O padrão de Iranduba não se confirma na escala regional.
 \begin{figure}[h]\centering\includegraphics[width=\columnwidth]{figuras/etapa6_fuzzy_vs_rigido.png}
 \caption{Saída fuzzy suave × limiar rígido.}\end{figure}
 
 \section{Conclusão e limitações}
 % TODO: "sem registro" não é ausência certa; mudanças entre edições refletem também o método;
+% a violência indica onde, não quando (teste da janela 2022--24 e do salto de 2024);
 % divergências internas do relatório (AP, PA, TO); MA entra inteiro; ética de rotular municípios.
 
 \begin{thebibliography}{9}
 \bibitem{aima} S. Russell e P. Norvig. \emph{Artificial Intelligence: A Modern Approach}, 4. ed. Pearson, 2020.
 \bibitem{carto3} Instituto Mãe Crioula e FBSP. \emph{Cartografias da Violência na Amazônia}, 3. ed., 2024.
 \bibitem{carto4} Instituto Mãe Crioula e FBSP. \emph{Cartografias da Violência na Amazônia}, 4. ed., 2025.
-\bibitem{vde} Ministério da Justiça e Segurança Pública. Banco VDE (SINESP), 2020--2023. Acesso em out. 2026.
+\bibitem{vde} Ministério da Justiça e Segurança Pública. Banco VDE (SINESP), 2020--2024. Acesso em out. 2026.
 \bibitem{ibge} IBGE. Censo Demográfico 2022 e Estimativas da População. Acesso em nov. 2026.
 \bibitem{siq} I. Siqueira e L. Paiva. ``No Norte, tem Comando''. \emph{Rev. Bras. Sociologia}, v. 7, n. 17, 2019.
 \bibitem{ribeiro} J. Ribeiro et al. Prediction of Homicides in Urban Centers. arXiv:2008.06979.

@@ -10,7 +10,7 @@ municípios passaram a ter facção em 2025?
 - **Rótulos:** *Cartografias da Violência na Amazônia* (Instituto Mãe Crioula / Fórum Brasileiro de
   Segurança Pública) — 3ª edição (2024, Tabelas 13–21) e 4ª edição (2025, quadros por estado,
   extraídos do PDF com `extrair_cartografias_2025.py`).
-- **Atributos:** SINESP VDE / Ministério da Justiça, 2020–2023.
+- **Atributos:** SINESP VDE / Ministério da Justiça, 2020–2023 (2024 entra no teste da janela 2022–24 e do salto de homicídios, Etapa 6).
 - **População:** IBGE (Censo 2022 e estimativas), juntada pelo código IBGE.
 - **Unidade:** 808 municípios dos 9 estados da Amazônia Legal. Com facção: 32,1% em 2024 e 42,5% em 2025.
 
@@ -49,7 +49,7 @@ municípios passaram a ter facção em 2025?
 | 3 | P(facção \| taxa alta) = 0,42 contra 0,27. Entre os sem facção em 2024, 23,5% entraram em 2025 (14% pequenos, 37% grandes) |
 | 4 | Naive Bayes 77,4% (bal. 0,74); NB + EM 78,0% (bal. 0,75). EM: no grupo mais violento, 29% em disputa; no menos, 1,7% |
 | 5 | 19 parâmetros contra 215 da conjunta; enumeração idêntica ao pgmpy. Rede como classificador: AUC 0,81 |
-| 6 | Prioridade alta: 62% com facção (2024). **Entrada em 2025:** 13% na prioridade baixa, 45% na alta; AUC 0,77 |
+| 6 | Prioridade alta: 62% com facção (2024). **Entrada em 2025:** 13% na prioridade baixa, 45% na alta; AUC 0,77. Janela 2022–24 não melhora (AUC 0,754 nas duas); salto de homicídios em 2024 não antecipa a chegada |
 
 ## Como reproduzir
 
@@ -65,4 +65,5 @@ jupyter nbconvert --to notebook --execute --inplace etapa1.ipynb   # ... até et
 - O próprio relatório tem pequenas divergências entre as tabelas por estado e o quadro-resumo (AP, PA, TO);
   definimos "disputa" pelo número de facções listadas.
 - O Maranhão entra inteiro (217 municípios), mas só 181 pertencem à Amazônia Legal.
+- A violência indica **onde** a facção tende a estar, mas não **quando** chega: o salto de 2024 tem o mesmo efeito do salto de 2023.
 - 2023 não tem estimativa do IBGE; as taxas de 2021–23 usam a população do Censo 2022.
