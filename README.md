@@ -33,6 +33,7 @@ municípios passaram a ter facção em 2025?
 | `montar_bases_externas.py` | Baixa e agrega IBGE, INPE e IBAMA em `dados/variaveis_externas_municipio.csv` (brutos em `dados/brutos/`, fora do git) |
 | `dados/` | Base rotulada com população, tabelas do Cartografias 2024 e 2025, população do IBGE e as probabilidades da Etapa 5 |
 | `tex/relatorio.tex`, `tex/relatorio.pdf` | Relatório final (formato artigo, 7 páginas) |
+| `artigos/README.md` | Artigos científicos citados, com links e onde cada um embasa o relatório |
 | `figuras/` | Figuras geradas pelos notebooks e usadas no relatório |
 
 ## Atributos
