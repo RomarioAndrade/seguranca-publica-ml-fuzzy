@@ -65,7 +65,11 @@ indica onde a inteligência policial teria mais chance de encontrar atuação de
 \cite{vde}, 2020--2024, por município (homicídio doloso, tentativa, morte a esclarecer,
 latrocínio, mandados). (iii) \emph{População}: IBGE, Censo 2022 e estimativas \cite{ibge}, unida pelo
 código do município. Os 5.570 municípios do VDE casaram com o IBGE; os 808 dos 9 estados casaram
-com o Cartografias.
+com o Cartografias. (iv) \emph{Bases externas}, usadas na análise do garimpo e nos experimentos
+(Seção~\ref{sec:exp}): autos de infração e termos de destruição do IBAMA \cite{ibama}, alertas do
+DETER/INPE \cite{deter}, faixa de fronteira, malha municipal e REGIC do IBGE \cite{ibge}, todos de
+2021--23 e agregados por município (\texttt{montar\_bases\_externas.py}). Dos arquivos do IBAMA,
+que identificam os autuados, guardamos só contagens por município.
 
 \textbf{Atributos.} Para a árvore, o Naive Bayes e a rede, usamos atributos discretos e
 interpretáveis (Tabela~\ref{tab:atrib}). As taxas são médias anuais de 2021--23 por 100 mil
@@ -242,6 +246,27 @@ uma facção & 32 & 126 & 16 & 174\\
 disputa & 13 & 18 & 54 & 85\\\bottomrule
 \end{tabular}\caption{Regimes de facção em 2024 e 2025 (municípios).}\label{tab:trans}\end{table}
 
+\textbf{Garimpo e a entrada em 2025.} O Cartografias aponta o garimpo ilegal como uma das economias
+exploradas pelas facções na região. Medimos o garimpo em 2021--23 por duas fontes independentes:
+auto de infração do IBAMA por garimpo ou mineração ilegal (71 municípios) e alerta do DETER/INPE
+da classe mineração (76). Entre os 549 sem facção em 2024 (Tabela~\ref{tab:garimpo}), os que tinham
+garimpo tiveram o dobro de entradas em 2025 nas duas fontes (teste exato de Fisher, $p=0{,}001$ e
+$0{,}003$). Por Bayes, com a fonte IBAMA,
+$P(\text{entrada}\mid G)=P(G\mid\text{entrada})\,P(\text{entrada})/P(G)=0{,}147\times0{,}235/0{,}077=0{,}45$.
+Já a associação com a facção \emph{existente} em 2024 é fraca: pelo IBAMA, dentro do mesmo porte,
+não há diferença (médios: 37\% contra 33\%). O garimpo sinaliza \emph{para onde} a facção vai, o que a
+violência não capta (Seção~\ref{sec:fuzzy}). Cuidados: autuação também reflete onde houve
+fiscalização, e o DETER inclui mineração legal.
+
+\begin{table}[H]\centering\small
+\begin{tabular}{lcc}\toprule
+Entrada em 2025 & IBAMA & INPE\\\midrule
+Com garimpo & 45,2\% & 44,7\%\\
+Sem garimpo & 21,7\% & 21,9\%\\
+Médios com garimpo & 55,6\% ($n=27$) & 60,0\% ($n=25$)\\
+Médios sem garimpo & 28,1\% & 27,9\%\\\bottomrule
+\end{tabular}\caption{Entrada de facção em 2025 entre os municípios sem facção em 2024, segundo o garimpo em 2021--23.}\label{tab:garimpo}\end{table}
+
 \section{Etapa 4 --- MLE, MAP, Naive Bayes e EM}
 \textbf{MLE e MAP.} Para $\theta=P(\text{facção})$ por estado, $\hat\theta_{MLE}=k/n$ e, com prior
 Beta(2,2), $\hat\theta_{MAP}=(k+1)/(n+2)$. Onde há poucos municípios, o MLE é extremo: no Acre
@@ -352,7 +377,7 @@ para 0,83; a rede já os via com probabilidade intermediária (0,40, contra 0,58
 nas duas edições e 0,23 dos sem facção), o que é coerente com erro de registro ou mudança de método.
 Com o rótulo ``facção em 2024 ou 2025'', a AUC é 0,82. As conclusões não dependem do ruído do rótulo.
 
-\section{Etapa 6 --- Lógica fuzzy e integração}
+\section{Etapa 6 --- Lógica fuzzy e integração}\label{sec:fuzzy}
 \textbf{Variáveis linguísticas.} O sistema Mamdani (\texttt{scikit-fuzzy}) tem duas entradas:
 \emph{presença} $=P(F)$ vinda da rede (baixa, média, alta, centradas em torno da taxa-base de 32\%) e
 \emph{tendência} = variação relativa dos homicídios de 2020--21 para 2022--23 (queda, estável, alta).
@@ -413,6 +438,40 @@ dos 808 municípios.
 contestar, e cada entrada tem origem rastreável: a presença vem da rede (cujas CPTs são tabelas de
 frequência) e a tendência vem direto do VDE.
 
+\section{Experimentos com outras variáveis}\label{sec:exp}
+O enunciado limita a árvore a 4--6 atributos e a rede a 4--6 nós, e o pipeline já usa 6. Testamos
+então 15 variáveis candidatas \emph{trocando} um nó da rede (em geral \texttt{ESC}), com as mesmas
+validações (\texttt{experimentos\_variaveis.ipynb}); a Tabela~\ref{tab:exp} resume.
+
+\begin{table}[H]\centering\footnotesize\setlength\tabcolsep{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}\toprule
+Variável na rede & 2024 & Estado fora & Entrada 2025\\\midrule
+Atual & 0,810 & 0,800 & \textbf{0,764}\\
+Faixa de fronteira no lugar de \texttt{FRONT} & \textbf{0,837} & \textbf{0,811} & 0,708\\
+Vizinho com facção (malha IBGE) & 0,819 & 0,800 & 0,742\\
+Urbanização (Censo 2022) & 0,819 & 0,788 & 0,731\\
+Hierarquia urbana (REGIC) & 0,807 & 0,787 & 0,751\\
+Latrocínio, feminicídio, mandados & 0,81--0,82 & 0,80--0,81 & 0,73--0,76\\
+Suicídio, trânsito (placebos) & 0,813--0,815 & 0,80 & 0,752\\
+Garimpo IBAMA / INPE & 0,813 / 0,809 & 0,79--0,80 & 0,747\\
+Desmatamento (DETER) & 0,808 & 0,796 & 0,733\\\bottomrule
+\end{tabular}}\caption{AUC da rede com cada variável candidata (probabilidades fora da dobra).}\label{tab:exp}\end{table}
+
+\textbf{Fronteira por município.} Trocar \texttt{FRONT} por estado pela faixa de fronteira do IBGE
+melhora o diagnóstico (AUC 0,84) e corrige boa parte do erro de nível: com o estado de fora, a
+$P$ média prevista sobe para 0,68 no Acre e 0,70 em Roraima. Mas a previsão da entrada em 2025 cai
+para 0,71: nos estados de fronteira, a expansão foi tão frequente no interior (38\%) quanto na faixa
+(36\%), e a variável municipal rebaixa justamente o interior do Pará, do Mato Grosso e do Amazonas.
+Como o objetivo final é antecipar a expansão, mantivemos \texttt{FRONT} por estado.
+
+\textbf{As demais.} Nenhuma muda a AUC de 2024 em mais de 0,01, e todas pioram a entrada em 2025.
+Os placebos (suicídio, trânsito) rendem tanto quanto as variáveis de violência: os sintomas da rede
+carregam sobretudo o tamanho e a urbanização do município. Vizinhos, urbanização e hierarquia
+urbana repetem o que porte e estado já dizem. Numa logística só para a entrada em 2025, nenhuma
+variável eleva a AUC (0,779) além do desvio entre dobras (0,05). O garimpo dobra a taxa de entrada,
+mas atinge só cerca de 40 dos 549 municípios, pouco para mudar a AUC do conjunto.
+
 \section{Discussão}
 A Tabela~\ref{tab:gab} compara os resultados com as faixas de referência do enunciado. Ficamos
 dentro ou acima nas Etapas 1 e 2 (regressão). Ficamos abaixo na logística e no NB + EM. A razão é o
@@ -448,15 +507,18 @@ devolve uma decisão legível, agora sem fronteiras rígidas.
 O porte do município e o estado explicam a maior parte da presença registrada de facção na
 Amazônia Legal; a violência refina essa estimativa. A probabilidade calculada com dados até 2023
 antecipa parte da expansão observada em 2025 (AUC 0,76), mas a violência indica \emph{onde} a facção
-tende a estar, não \emph{quando} ela chega.
+tende a estar, não \emph{quando} ela chega. O garimpo, medido pelo IBAMA e pelo INPE, é a pista mais
+clara de \emph{para onde} ela vai: dobra a taxa de entrada em 2025. Das 15 variáveis de outras bases
+que testamos, nenhuma melhorou os modelos de forma consistente; o limite parece estar no rótulo,
+não na falta de atributos.
 
 \textbf{Limitações.} (1) ``Sem registro'' no Cartografias significa facção não identificada pelos
 pesquisadores, não ausência certa; por isso falamos em facção \emph{registrada}. (2) Parte das
 mudanças entre a 3ª e a 4ª edição vem da melhoria do método; 45 municípios ``saíram'' da lista.
 (3) O relatório tem pequenas divergências entre as tabelas por estado e o quadro-resumo (AP, PA,
 TO); definimos ``disputa'' pelo número de facções listadas. (4) O Maranhão entra inteiro (217
-municípios), mas só 181 pertencem à Amazônia Legal. (5) \texttt{FRONT} é definido por estado; uma
-variável por município (faixa de fronteira do IBGE) deve corrigir o erro de nível em AC e RR.
+municípios), mas só 181 pertencem à Amazônia Legal. (5) \texttt{FRONT} é definido por estado; a versão por município corrige o erro de nível em AC e RR,
+mas piora a previsão de 2025 (Seção~\ref{sec:exp}).
 (6) Não há estimativa do IBGE para 2023; as taxas usam o Censo 2022.
 
 \textbf{Ética.} A saída é uma prioridade estatística para orientar monitoramento, não uma acusação.
@@ -472,7 +534,9 @@ notebook.
 \bibitem{carto3} Instituto Mãe Crioula e Fórum Brasileiro de Segurança Pública. \emph{Cartografias da Violência na Amazônia}, 3. ed., 2024.
 \bibitem{carto4} Instituto Mãe Crioula e Fórum Brasileiro de Segurança Pública. \emph{Cartografias da Violência na Amazônia}, 4. ed., 2025.
 \bibitem{vde} Ministério da Justiça e Segurança Pública. Banco VDE (SINESP), 2020--2024. \url{https://dadosabertos.mj.gov.br}. Acesso em out. 2026.
-\bibitem{ibge} IBGE. Censo Demográfico 2022 e Estimativas da População. \url{https://www.ibge.gov.br}. Acesso em nov. 2026.
+\bibitem{ibge} IBGE. Censo Demográfico 2022, Estimativas da População, Municípios da Faixa de Fronteira 2024, Malha Municipal e REGIC 2018. \url{https://www.ibge.gov.br}. Acesso em nov. 2026.
+\bibitem{ibama} IBAMA. Dados abertos: autos de infração e termos de destruição. \url{https://dadosabertos.ibama.gov.br}. Acesso em nov. 2026.
+\bibitem{deter} INPE. DETER Amazônia, TerraBrasilis. \url{https://terrabrasilis.dpi.inpe.br}. Acesso em nov. 2026.
 \bibitem{siq} I. Siqueira e L. Paiva. ``No Norte, tem Comando'': as facções criminosas na Amazônia. \emph{Revista Brasileira de Sociologia}, 7(17), 2019.
 \bibitem{ribeiro} J. Ribeiro et al. Prediction of Homicides in Urban Centers. arXiv:2008.06979.
 \end{thebibliography}
@@ -488,6 +552,7 @@ execução dos notebooks com \texttt{seed = 42}. Principais pedidos feitos ao as
 \item ``O município da Amazônia Legal tem presença de facção criminosa (2024), dado o seu porte e o padrão de violência registrado entre 2021 e 2023? E o modelo antecipa quais municípios passaram a ter facção em 2025? Implemente as 6 etapas do enunciado.''
 \item ``Implemente do zero o ID3, o gradiente descendente, a logística, o Naive Bayes, o EM e a inferência por enumeração, e compare com scikit-learn e pgmpy.''
 \item ``Torne a validação mais rigorosa: probabilidades fora da dobra, tercis calculados no treino e validação deixando um estado de fora.''
+\item ``Teste outras variáveis do IBGE e de bases abertas do governo (fronteira por município, garimpo e desmatamento, IBAMA), sem passar do limite de 6 atributos.''
 \item ``Prepare o trabalho para entrega conforme o enunciado (relatório LaTeX de 6--8 páginas, README e notebooks).''
 \end{enumerate}
 

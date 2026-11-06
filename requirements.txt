@@ -7,3 +7,4 @@ pgmpy>=1.0
 scikit-fuzzy
 openpyxl
 jupyter
+xlrd
