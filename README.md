@@ -1,7 +1,10 @@
-# Pipeline Integrado de IA — EXEMPLO com dados reais: facções na Amazônia Legal
-### Trabalho Integrado de Fundamentos de IA (Domínio P3: Segurança Pública) — Prof. Edjard Mota
+# Do Simbólico à Incerteza: facções criminosas na Amazônia Legal
+### Trabalho Integrado de Fundamentos de IA (Domínio P3: Segurança Pública) — Prof. Edjard Mota — IComp/UFAM 2026/2
 
-> **Exemplo didático** para comparar com o exemplo de feminicídio (`../exemplo_feminicidio_dados_reais`).
+**Equipe 1:** Gabriel Menezes Rodrigues, Luiz Felipe Gonzaga do Carmo, Joshua Tadeu Bastos Pereira,
+Romário Roberto de Pádua Andrade, Ruan Pablo Nascimento de Aragão, Fernando Teles dos Reis.
+
+**Relatório:** [`tex/relatorio.pdf`](tex/relatorio.pdf) (LaTeX em `tex/relatorio.tex`).
 
 **Pergunta:** o município da Amazônia Legal tem presença de facção criminosa (2024), dado o seu
 porte e o padrão de violência registrado entre 2021 e 2023? E o modelo antecipa quais
@@ -27,7 +30,8 @@ municípios passaram a ter facção em 2025?
 | `utils.py`, `em.py`, `fuzzy.py` | Módulos de apoio |
 | `montar_base_vde.py`, `montar_populacao_ibge.py`, `extrair_cartografias_2025.py` | Scripts que geram as bases |
 | `dados/` | Base rotulada com população, tabelas do Cartografias 2024 e 2025, população do IBGE e as probabilidades da Etapa 5 |
-| `tex/relatorio_exemplo.tex` | Esqueleto do relatório com os resultados |
+| `tex/relatorio.tex`, `tex/relatorio.pdf` | Relatório final (formato artigo, 7 páginas) |
+| `figuras/` | Figuras geradas pelos notebooks e usadas no relatório |
 
 ## Atributos
 
@@ -56,8 +60,12 @@ municípios passaram a ter facção em 2025?
 ```bash
 pip install -r requirements.txt
 python utils.py
-jupyter nbconvert --to notebook --execute --inplace etapa1.ipynb   # ... até etapa6 (em ordem)
+for i in 1 2 3 4 5 6; do jupyter nbconvert --to notebook --execute --inplace etapa$i.ipynb; done
+cd tex && latexmk -pdf relatorio.tex   # relatório
 ```
+
+A ordem importa: a Etapa 5 grava `dados/probabilidades_bayesianas.csv`, lido pela Etapa 6.
+Testado com Python 3 e as versões de `requirements.txt`; os números acima saem com `seed = 42`.
 
 ## Validação
 - **Validação cruzada (5 dobras estratificadas, `seed = 42`)** com o rótulo de 2024. Os tercis de `TXH` e `TXT` são
@@ -77,3 +85,12 @@ jupyter nbconvert --to notebook --execute --inplace etapa1.ipynb   # ... até et
   que não viu (Acre e Roraima). Uma variável de fronteira por município (faixa de fronteira do IBGE) ajudaria.
 - A violência indica **onde** a facção tende a estar, mas não **quando** chega: o salto de 2024 tem o mesmo efeito do salto de 2023.
 - 2023 não tem estimativa do IBGE; as taxas de 2021–23 usam a população do Censo 2022.
+
+## Fontes (acesso em out./nov. 2026)
+- Ministério da Justiça e Segurança Pública — Banco VDE (SINESP): https://dadosabertos.mj.gov.br
+- IBGE — Censo 2022 e Estimativas da População: https://www.ibge.gov.br
+- Instituto Mãe Crioula e Fórum Brasileiro de Segurança Pública — *Cartografias da Violência na Amazônia*, 3ª ed. (2024) e 4ª ed. (2025)
+
+## Uso de assistente de IA
+Parte do código e do texto foi gerada com apoio de um assistente (Claude, via Claude Code) e revisada pela equipe.
+Os principais pedidos estão no Apêndice A do relatório.
