@@ -1,3 +1,6 @@
+# Dados brutos baixados por montar_bases_externas.py (grandes; os do IBAMA identificam pessoas)
+dados/brutos/
+
 # Python
 __pycache__/
 *.py[cod]

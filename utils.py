@@ -70,6 +70,15 @@ def montar_tabela(base: pd.DataFrame | None = None) -> pd.DataFrame:
     return d
 
 
+def juntar_externas(d: pd.DataFrame) -> pd.DataFrame:
+    """Acrescenta as variáveis de outras bases (montar_bases_externas.py) e os indicadores de garimpo."""
+    ext = pd.read_csv(PASTA / "dados" / "variaveis_externas_municipio.csv", dtype={"cod_ibge": str})
+    d = d.merge(ext, on="cod_ibge", how="left")
+    d["GARIMPO_IBAMA"] = (d["ibama_autos_garimpo"] > 0).astype(int)    # auto de infração por garimpo/mineração
+    d["GARIMPO_INPE"] = (d["deter_mineracao_alertas"] > 0).astype(int)  # alerta DETER da classe mineração
+    return d
+
+
 TAXAS_TERCIL = {"TXH": "taxa_homicidio_2021_23", "TXT": "taxa_tent_homicidio_2021_23"}
 
 
