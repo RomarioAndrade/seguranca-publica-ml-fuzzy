@@ -1,7 +1,7 @@
 """
 utils.py — carga e preparação dos dados: facções na Amazônia Legal.
 
-Pergunta do EXEMPLO:
+Pergunta:
     "O município da Amazônia Legal tem presença de facção criminosa (2024),
      dado o seu porte e o padrão de violência registrado entre 2021 e 2023?
      E o modelo antecipa quais municípios passaram a ter facção em 2025?"
