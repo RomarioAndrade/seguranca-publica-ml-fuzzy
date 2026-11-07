@@ -34,7 +34,6 @@ de facções criminosas nos municípios da Amazônia Legal}}
 
 \begin{document}
 
-\twocolumn[
 \maketitle
 \begin{abstract}
 \noindent A presença de facções criminosas não aparece em nenhuma base oficial: é uma
@@ -48,8 +47,6 @@ calculada antecipa quais municípios passaram a ter facção segundo a edição 
 (AUC 0,76): na prioridade fuzzy baixa, 13\% entraram; na alta, 44\%. A violência indica
 onde a facção tende a estar, mas não quando ela chega.
 \end{abstract}
-\vspace{1em}
-]
 
 %=====================================================================
 \section{Introdução}
@@ -189,7 +186,7 @@ dobra).}\label{tab:arvore}
 \end{figure}
 
 \paragraph{Monotonicidade.} A regra mais simples sugerida pelos dados é
-$\forall x\,(\mathit{Pequeno}(x)\rightarrow\neg\mathit{Facção}(x))$. Ela cobre 267
+$\forall x\,(\textit{Pequeno}(x)\rightarrow\neg\textit{Facção}(x))$. Ela cobre 267
 municípios e acerta 89,9\%. Mas, ao acrescentarmos um único fato novo, ``o município fica
 no Acre'' ou ``em Roraima'', a conclusão se inverte: todos os pequenos desses estados têm
 facção (3 de 3 e 2 de 2), e em Rondônia 9 de 22. São estados de fronteira, na rota da
@@ -285,7 +282,7 @@ Naive Bayes é violada: os dois sintomas compartilham uma causa que não está n
 volume de violência).
 
 \paragraph{Por que a LPO não diz ``42\% de chance''.} A fórmula
-$\forall x\,(\mathit{ViolênciaAlta}(x)\rightarrow\mathit{Facção}(x))$ é falsa, porque há
+$\forall x\,(\textit{ViolênciaAlta}(x)\rightarrow\textit{Facção}(x))$ é falsa, porque há
 municípios violentos sem facção; a sua negação também não serve. A lógica de primeira ordem
 só atribui verdadeiro ou falso; para dizer ``em 42\% dos casos'' é preciso uma medida de
 crença, que é a probabilidade.
