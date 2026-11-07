@@ -1,3 +1,5 @@
+% Relatório final — Trabalho Integrado de Fundamentos de IA (P3: Segurança Pública)
+% Compilar dentro de tex/:  latexmk -pdf relatorio.tex
 \documentclass[10pt,a4paper,twocolumn]{article}
 
 \usepackage[utf8]{inputenc}
@@ -11,13 +13,15 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage[font=small,labelfont=bf]{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 \usepackage[hidelinks]{hyperref}
 
 \setlist{nosep,leftmargin=1.5em}
 \setlength{\parindent}{1em}
 \renewcommand{\arraystretch}{1.1}
 
-% Figura com marcador de lugar caso o arquivo nao exista em figuras/
+% Figura gerada pelos notebooks em ../figuras/; marcador de lugar se o arquivo nao existir
 \newcommand{\fig}[2]{%
   \IfFileExists{#1}{\includegraphics[width=#2\linewidth]{#1}}%
   {\fbox{\parbox{#2\linewidth}{\centering\small\vspace{1.2cm}[figura: \texttt{\detokenize{#1}}]\vspace{1.2cm}}}}}
@@ -50,7 +54,25 @@ onde a facção tende a estar, mas não quando ela chega.
 
 \begin{figure*}[t]
 \centering
-\fig{figuras/fig1_pipeline.png}{0.95}
+\begin{tikzpicture}[node distance=0.35cm and 0.45cm,
+  bx/.style={draw,rounded corners,align=center,font=\footnotesize,minimum height=1.0cm,text width=2.05cm,fill=blue!6},
+  dt/.style={draw,rounded corners,align=center,font=\footnotesize,minimum height=1.0cm,text width=2.2cm,fill=gray!12},
+  ar/.style={-{Stealth[length=2mm]},thick},
+  da/.style={-{Stealth[length=2mm]},thick,dashed,orange!80!black}]
+\node[dt] (dados) {Dados oficiais\\VDE + IBGE\\Cartografias 2024};
+\node[bx,right=of dados] (e1) {\textbf{E1} Árvore\\ganho, ID3};
+\node[bx,right=of e1] (e2) {\textbf{E2} Regressão\\+ logística};
+\node[bx,right=of e2] (e3) {\textbf{E3} Probab.\\Bayes, transições};
+\node[bx,right=of e3] (e4) {\textbf{E4} NB + EM\\regimes ocultos};
+\node[bx,right=of e4] (e5) {\textbf{E5} Rede bayes.\\$P(F\mid\text{evid.})$};
+\node[bx,below=0.9cm of e5,fill=green!8] (e6) {\textbf{E6} Fuzzy\\prioridade 0--100};
+\node[dt,left=0.6cm of e6,text width=3.0cm] (val) {Validação fora do tempo\\Cartografias 2025};
+\node[dt,left=0.6cm of val,text width=3.0cm,fill=yellow!15] (dec) {Decisão interpretável:\\prioridade de monitoramento};
+\draw[ar] (dados)--(e1); \draw[ar] (e1)--(e2); \draw[ar] (e2)--(e3); \draw[ar] (e3)--(e4); \draw[ar] (e4)--(e5);
+\draw[ar] (e5)--(e6); \draw[ar] (e6)--(val); \draw[ar] (val)--(dec);
+\draw[da] (e1.north) to[bend left=18] node[above,font=\scriptsize]{atributos e alvo (PORTE, tercis)} (e5.north);
+\draw[da] (e4.south) to[bend right=20] node[left,font=\scriptsize]{volume $\times$ taxa} (e6.north west);
+\end{tikzpicture}
 \caption{Pipeline integrado. As setas tracejadas indicam reutilização: os atributos e a
 discretização definidos na Etapa 1 alimentam a rede, e o EM mostra que o volume de violência
 importa, o que orienta a escolha das entradas do sistema fuzzy.}\label{fig:pipeline}
@@ -189,7 +211,7 @@ dobra).}\label{tab:arvore}
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig2_profundidade.png}{0.95}
+\fig{../figuras/etapa1_profundidade.png}{0.95}
 \caption{Acurácia de teste por profundidade máxima.}\label{fig:prof}
 \end{figure}
 
@@ -219,7 +241,7 @@ de oscilar entre anos correlacionados.
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig3_ridge.png}{0.95}
+\fig{../figuras/etapa2_ridge_path.png}{0.95}
 \caption{Coeficientes do Ridge em função de $\lambda$.}\label{fig:ridge}
 \end{figure}
 
@@ -361,7 +383,7 @@ mas os grupos acompanham o Cartografias (Tabela~\ref{tab:em}): no grupo menos vi
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig4_em.png}{0.98}
+\fig{../figuras/etapa4_em.png}{0.98}
 \caption{EM: log-verossimilhança por iteração e mistura estimada.}\label{fig:em}
 \end{figure}
 
@@ -402,7 +424,16 @@ diagnóstico: observamos porte, estado e sintomas e inferimos $P(\F\mid\text{evi
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig5_dag.png}{0.8}
+\begin{tikzpicture}[n/.style={draw,ellipse,font=\footnotesize,minimum width=1.3cm,inner sep=2pt},
+  ar/.style={-{Stealth[length=2mm]},thick}]
+\node[n] (p) at (-1.5,1.4) {PORTE};
+\node[n] (f) at (1.5,1.4) {FRONT};
+\node[n,fill=orange!15] (c) at (0,0.2) {FACCAO};
+\node[n] (h) at (-2,-1.1) {TXH};
+\node[n] (e) at (0,-1.1) {ESC};
+\node[n] (t) at (2,-1.1) {TXT};
+\draw[ar] (p)--(c); \draw[ar] (f)--(c); \draw[ar] (c)--(h); \draw[ar] (c)--(e); \draw[ar] (c)--(t);
+\end{tikzpicture}
 \caption{DAG: \F{} é colisor de \texttt{PORTE} e \texttt{FRONT} e causa comum dos três
 sintomas.}\label{fig:dag}
 \end{figure}
@@ -479,7 +510,7 @@ Mamdani para nível de criminalidade classificaram melhor do que as trapezoidais
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig6_pertinencia.png}{0.98}
+\fig{../figuras/etapa6_pertinencia.png}{0.98}
 \caption{Funções de pertinência.}\label{fig:pert}
 \end{figure}
 
@@ -529,7 +560,7 @@ prioridade, o que um limiar sobre $P$ não faz.
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig7_fuzzy_limiar.png}{0.98}
+\fig{../figuras/etapa6_fuzzy_vs_rigido.png}{0.98}
 \caption{Prioridade fuzzy em função de $P(F)$ para três tendências, contra o limiar
 rígido.}\label{fig:sup}
 \end{figure}
@@ -557,6 +588,7 @@ Tabela~\ref{tab:var} resume.
 
 \begin{table}[t]
 \centering\footnotesize
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}lccc@{}}
 \toprule
 Variável na rede & 2024 & Estado fora & Entrada 2025\\
@@ -571,7 +603,7 @@ Suicídio, trânsito (placebos) & 0,813--0,815 & 0,80 & 0,752\\
 Garimpo IBAMA / INPE & 0,813 / 0,809 & 0,79--0,80 & 0,747\\
 Desmatamento (DETER) & 0,808 & 0,796 & 0,733\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \caption{AUC da rede com cada variável candidata (probabilidades fora da
 dobra).}\label{tab:var}
 \end{table}
@@ -646,8 +678,8 @@ lógica fuzzy. Buscamos identificar situações de elevado volume de ocorrência
 demandar maior atenção da gestão pública.
 
 \smallskip
-\noindent\textbf{Equipe 1 --- Facções Criminosas no Amazonas:} Nosso estudo investiga a
-presença e a expansão de facções criminosas nos municípios do Amazonas. Utilizamos rótulos
+\noindent\textbf{Equipe 1 --- Facções Criminosas na Amazônia Legal:} Nosso estudo investiga a
+presença e a expansão de facções criminosas nos municípios da Amazônia Legal. Utilizamos rótulos
 provenientes das Cartografias, 3ª e 4ª edições, e atributos extraídos do Banco VDE do
 SINESP/MJSP, abrangendo o período de 2020 a 2024. Também integramos informações
 populacionais do IBGE e indicadores externos do IBAMA, INPE e IBGE.
@@ -660,7 +692,7 @@ permitir análises territoriais mais específicas, embora exija cuidados adicion
 qualidade e a integração dos dados.
 
 \smallskip
-\noindent\textbf{Equipe 1 --- Facções Criminosas no Amazonas:} Exatamente. Nossa metodologia
+\noindent\textbf{Equipe 1 --- Facções Criminosas na Amazônia Legal:} Exatamente. Nossa metodologia
 utiliza códigos municipais para integrar diferentes fontes. Além dos registros de violência,
 consideramos variáveis territoriais e ambientais que podem contribuir para investigar
 associações com a presença de facções. Essas associações, entretanto, não devem ser
@@ -674,7 +706,7 @@ investigar padrões territoriais, desde que fossem realizados novos treinamentos
 validações.
 
 \smallskip
-\noindent\textbf{Equipe 1 --- Facções Criminosas no Amazonas:} Da mesma forma, a utilização
+\noindent\textbf{Equipe 1 --- Facções Criminosas na Amazônia Legal:} Da mesma forma, a utilização
 de redes Bayesianas e lógica fuzzy poderia contribuir para representar incertezas e produzir
 classificações interpretáveis. Entretanto, seria necessário avaliar a qualidade dos rótulos
 e os riscos de generalização indevida dos resultados.
