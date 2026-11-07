@@ -5,7 +5,7 @@
 \usepackage[brazilian]{babel}
 \usepackage{lmodern}
 \usepackage{microtype}
-\usepackage[margin=1.8cm,columnsep=0.7cm]{geometry}
+\usepackage[margin=1.7cm,columnsep=0.7cm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -47,6 +47,14 @@ calculada antecipa quais municípios passaram a ter facção segundo a edição 
 (AUC 0,76): na prioridade fuzzy baixa, 13\% entraram; na alta, 44\%. A violência indica
 onde a facção tende a estar, mas não quando ela chega.
 \end{abstract}
+
+\begin{figure*}[t]
+\centering
+\fig{figuras/fig1_pipeline.png}{0.95}
+\caption{Pipeline integrado. As setas tracejadas indicam reutilização: os atributos e a
+discretização definidos na Etapa 1 alimentam a rede, e o EM mostra que o volume de violência
+importa, o que orienta a escolha das entradas do sistema fuzzy.}\label{fig:pipeline}
+\end{figure*}
 
 %=====================================================================
 \section{Introdução}
@@ -181,7 +189,7 @@ dobra).}\label{tab:arvore}
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig2_profundidade.pdf}{0.95}
+\fig{figuras/fig2_profundidade.png}{0.95}
 \caption{Acurácia de teste por profundidade máxima.}\label{fig:prof}
 \end{figure}
 
@@ -209,17 +217,9 @@ aplicamos Ridge: o $\lambda$ escolhido por validação cruzada é 0,084, com $R^
 (Figura~\ref{fig:ridge}). À medida que $\lambda$ cresce, os coeficientes encolhem e deixam
 de oscilar entre anos correlacionados.
 
-\begin{figure*}[t]
-\centering
-\fig{figuras/fig1_pipeline.pdf}{0.95}
-\caption{Pipeline integrado. As setas tracejadas indicam reutilização: os atributos e a
-discretização definidos na Etapa 1 alimentam a rede, e o EM mostra que o volume de violência
-importa, o que orienta a escolha das entradas do sistema fuzzy.}\label{fig:pipeline}
-\end{figure*}
-
 \begin{figure}[t]
 \centering
-\fig{figuras/fig3_ridge.pdf}{0.95}
+\fig{figuras/fig3_ridge.png}{0.95}
 \caption{Coeficientes do Ridge em função de $\lambda$.}\label{fig:ridge}
 \end{figure}
 
@@ -361,7 +361,7 @@ mas os grupos acompanham o Cartografias (Tabela~\ref{tab:em}): no grupo menos vi
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig4_em.pdf}{0.98}
+\fig{figuras/fig4_em.png}{0.98}
 \caption{EM: log-verossimilhança por iteração e mistura estimada.}\label{fig:em}
 \end{figure}
 
@@ -402,7 +402,7 @@ diagnóstico: observamos porte, estado e sintomas e inferimos $P(\F\mid\text{evi
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig5_dag.pdf}{0.8}
+\fig{figuras/fig5_dag.png}{0.8}
 \caption{DAG: \F{} é colisor de \texttt{PORTE} e \texttt{FRONT} e causa comum dos três
 sintomas.}\label{fig:dag}
 \end{figure}
@@ -479,7 +479,7 @@ Mamdani para nível de criminalidade classificaram melhor do que as trapezoidais
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig6_pertinencia.pdf}{0.98}
+\fig{figuras/fig6_pertinencia.png}{0.98}
 \caption{Funções de pertinência.}\label{fig:pert}
 \end{figure}
 
@@ -529,7 +529,7 @@ prioridade, o que um limiar sobre $P$ não faz.
 
 \begin{figure}[t]
 \centering
-\fig{figuras/fig7_fuzzy_limiar.pdf}{0.98}
+\fig{figuras/fig7_fuzzy_limiar.png}{0.98}
 \caption{Prioridade fuzzy em função de $P(F)$ para três tendências, contra o limiar
 rígido.}\label{fig:sup}
 \end{figure}
@@ -726,7 +726,7 @@ Rotular publicamente uma localidade pode gerar estigma e afetar investimento e t
 isso a lista de candidatos fica restrita ao notebook.
 
 %=====================================================================
-\begin{thebibliography}{99}\small
+\begin{thebibliography}{99}\footnotesize
 \setlength{\itemsep}{0pt}
 \bibitem{r1} S. Russell e P. Norvig. \emph{Artificial Intelligence: A Modern Approach}, 4.\ ed.
 Pearson, 2020 (caps.\ 18--20).
@@ -818,4 +818,3 @@ ajudou a preparar o relatório em \LaTeX, o README e os notebooks para a entrega
 \url{https://github.com/RomarioAndrade/seguranca-publica-ml-fuzzy}.
 
 \end{document}
-
