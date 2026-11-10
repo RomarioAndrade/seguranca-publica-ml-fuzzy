@@ -87,7 +87,7 @@ Testado com Python 3 e as versões de `requirements.txt`; os números acima saem
 - Parte das mudanças entre a 3ª e a 4ª edição vem da melhoria do método (o próprio relatório avisa); 45 municípios "saíram" da lista.
 - O próprio relatório tem pequenas divergências entre as tabelas por estado e o quadro-resumo (AP, PA, TO);
   definimos "disputa" pelo número de facções listadas.
-- O Maranhão entra inteiro (217 municípios), mas só 181 pertencem à Amazônia Legal.
+- O Maranhão entra inteiro (217 municípios), mas só 181 pertencem à Amazônia Legal..
 - `FRONT` é definido por estado e só separa MA e TO dos demais; por isso a rede não acerta o nível de facção num estado
   que não viu (Acre e Roraima). A faixa de fronteira por município corrige isso, mas piora a previsão de 2025 (`experimentos_variaveis.ipynb`).
 - A violência indica **onde** a facção tende a estar, mas não **quando** chega: o salto de 2024 tem o mesmo efeito do salto de 2023.
@@ -104,3 +104,4 @@ Testado com Python 3 e as versões de `requirements.txt`; os números acima saem
 ## Uso de assistente de IA
 Parte do código e do texto foi gerada com apoio de um assistente (Claude, via Claude Code) e revisada pela equipe.
 Os principais pedidos estão no Apêndice A do relatório.
+^
