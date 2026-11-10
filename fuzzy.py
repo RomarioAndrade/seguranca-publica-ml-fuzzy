@@ -2,7 +2,7 @@
 fuzzy.py — Sistema de inferência fuzzy Mamdani (scikit-fuzzy) para facções.
 
 Entradas:
-  presenca  : P(facção no município | evidências), vinda da rede bayesiana (Etapa 5), em [0, 1]
+  presenca  : P(facção no município), média da rede bayesiana (Etapa 5) e do Naive Bayes + EM (Etapa 4), em [0, 1]
   tendencia : variação relativa dos homicídios de 2020–21 para 2022–23, limitada a [-1, 2]
               (-1 = caiu 100%, 0 = estável, +1 = dobrou)
 Saída:
