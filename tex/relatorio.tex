@@ -1,25 +1,41 @@
 % Relatório final — Trabalho Integrado de Fundamentos de IA (P3: Segurança Pública)
+% Formato: artigo científico ABNT (NBR 6022, 6023, 6024, 10520) com abnTeX2.
 % Compilar dentro de tex/:  latexmk -pdf relatorio.tex
-\documentclass[10pt,a4paper,twocolumn]{article}
+% (a versão anterior, em duas colunas, está em relatorio_2colunas.tex)
+\documentclass[article,12pt,oneside,a4paper,brazil,sumario=tradicional]{abntex2}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[brazilian]{babel}
-\usepackage{lmodern}
+\usepackage{mathptmx}            % Times
+\renewcommand{\ttdefault}{lmtt}  % monoespaçada Latin Modern (vetorial) para PORTE, TXH etc.
 \usepackage{microtype}
-\usepackage[margin=1.7cm,columnsep=0.7cm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumitem}
-\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
-\usepackage[hidelinks]{hyperref}
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}   % citações autor-data
 
+% Margens ABNT: superior e esquerda 3 cm, inferior e direita 2 cm
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\OnehalfSpacing
+
+\hypersetup{hidelinks}
 \setlist{nosep,leftmargin=1.5em}
-\setlength{\parindent}{1em}
 \renewcommand{\arraystretch}{1.1}
+\setlength{\emergencystretch}{3em}   % evita linhas passando da margem
+
+% Títulos em Times negrito (o abnTeX2 usa fonte sem serifa por padrão)
+\renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
+% \paragraph sem número e na mesma linha do texto ("Monotonicidade. A regra...")
+\setsecnumdepth{subsubsection}
+\setparaheadstyle{\normalfont\bfseries}
+\setbeforeparaskip{1ex plus .5ex minus .2ex}
+\setafterparaskip{-1em}
+\setparaindent{\parindent}
 
 % Figura gerada pelos notebooks em ../figuras/; marcador de lugar se o arquivo nao existir
 \newcommand{\fig}[2]{%
@@ -27,33 +43,86 @@
   {\fbox{\parbox{#2\linewidth}{\centering\small\vspace{1.2cm}[figura: \texttt{\detokenize{#1}}]\vspace{1.2cm}}}}}
 
 \newcommand{\F}{\texttt{FACCAO}}
+\newcommand{\fonteautores}{\fonte{Elaborada pelos autores (2026).}}
+\newcommand{\fontedados}{\fonte{Elaborada pelos autores com dados do SINESP/VDE, do IBGE e
+do \emph{Cartografias da Violência na Amazônia} (2026).}}
 
-\title{\textbf{Do Simbólico à Incerteza: inferindo a presença e a expansão
-de facções criminosas nos municípios da Amazônia Legal}}
-\author{Equipe 1 --- P3 Segurança Pública\\[2pt]
-\small Gabriel Menezes Rodrigues, Luiz Felipe Gonzaga do Carmo, Joshua Tadeu Bastos Pereira,\\
-\small Romário Roberto de Pádua Andrade, Ruan Pablo Nascimento de Aragão, Fernando Teles dos Reis\\[2pt]
-\small Fundamentos de Inteligência Artificial --- Prof.\ Edjard Mota --- IComp/UFAM, 2026/2}
-\date{Novembro de 2026}
+\titulo{Do Simbólico à Incerteza: inferindo a presença e a expansão de facções criminosas
+nos municípios da Amazônia Legal}
+\tituloestrangeiro{}   % sem título em inglês (a classe exige a definição)
+\autor{Gabriel Menezes Rodrigues \and Luiz Felipe Gonzaga do Carmo \and Joshua Tadeu Bastos
+Pereira \and Romário Roberto de Pádua Andrade \and Ruan Pablo Nascimento de Aragão \and
+Fernando Teles dos Reis\thanks{Equipe 1 --- P3 Segurança Pública. Trabalho da disciplina
+Fundamentos de Inteligência Artificial, Prof.\ Edjard Mota, Instituto de Computação (IComp),
+Universidade Federal do Amazonas (UFAM), 2026/2.}}
+\local{Manaus}
+\data{Novembro de 2026}
 
 \begin{document}
 
-\maketitle
-\begin{abstract}
-\noindent A presença de facções criminosas não aparece em nenhuma base oficial: é uma
-variável oculta. Combinamos as estatísticas de violência do SINESP VDE (2020--2024) e a
-população do IBGE para inferi-la nos 808 municípios dos estados da Amazônia Legal, usando
-como referência o \emph{Cartografias da Violência na Amazônia} de 2024. Percorremos as
-seis etapas do pipeline: árvore de decisão, modelos lineares, probabilidade, Naive Bayes
-com EM, rede bayesiana e lógica fuzzy. A rede bayesiana diagnóstica atinge AUC de 0,81
-(0,80 testando num estado que não viu). Sem usar nenhum dado de 2025, a probabilidade
-calculada antecipa quais municípios passaram a ter facção segundo a edição de 2025
-(AUC 0,76): na prioridade fuzzy baixa, 14\% entraram; na alta, 45\%. A violência indica
-onde a facção tende a estar, mas não quando ela chega.
-\end{abstract}
+\selectlanguage{brazil}
+\frenchspacing
 
-\begin{figure*}[t]
+\maketitle
+
+%=====================================================================
+\begin{resumoumacoluna}
+A presença de facções criminosas não aparece em nenhuma base oficial: é uma variável oculta.
+Combinamos as estatísticas de violência do Validador de Dados Estatísticos (VDE) do Sistema
+Nacional de Informações de Segurança Pública (SINESP), de 2020 a 2024, e a população do
+Instituto Brasileiro de Geografia e Estatística (IBGE) para inferi-la nos 808 municípios dos
+estados da Amazônia Legal, usando como referência o \emph{Cartografias da Violência na
+Amazônia} de 2024. Percorremos as seis etapas do pipeline: árvore de decisão, modelos
+lineares, probabilidade, Naive Bayes com o algoritmo Esperança-Maximização (EM), rede
+bayesiana e lógica fuzzy. A rede bayesiana diagnóstica atinge área sob a curva ROC (AUC) de
+0,81 (0,80 testando num estado que não viu). Sem usar nenhum dado de 2025, a probabilidade calculada antecipa
+quais municípios passaram a ter facção segundo a edição de 2025 (AUC 0,76): na prioridade
+fuzzy baixa, 14\% entraram; na alta, 45\%. A violência indica onde a facção tende a estar,
+mas não quando ela chega.
+
+\vspace{\onelineskip}
+\noindent\textbf{Palavras-chave}: Facções criminosas. Amazônia Legal. Redes bayesianas.
+Lógica fuzzy. Aprendizado de máquina.
+\end{resumoumacoluna}
+
+\textual
+
+%=====================================================================
+\section{Introdução}
+
+Nas duas últimas décadas, facções criminosas nascidas no Sudeste (Primeiro Comando da
+Capital, PCC, e Comando Vermelho)
+e grupos regionais se espalharam pela Amazônia, atraídos pelas rotas fluviais e terrestres
+da cocaína produzida na Bolívia, no Peru e na Colômbia \cite{r11} e pelo sistema prisional,
+onde se organizam \cite{r10}. A literatura descreve uma interiorização das facções na
+região, ligada também ao garimpo ilegal \cite{r12,r13}. O \emph{Cartografias da Violência
+na Amazônia}, do Fórum Brasileiro de Segurança Pública com o Instituto Mãe Crioula, mapeia
+município a município quais facções atuam na região: na 3ª edição (dados de 2024) havia
+registro em 259 dos 808 municípios dos nove estados; na 4ª edição (2025), em 344.
+
+Esse mapeamento depende de trabalho de campo e de fontes policiais e não é atualizado
+continuamente. As estatísticas de violência, por outro lado, são publicadas todo ano pelo
+Ministério da Justiça. Trabalhos próximos usam aprendizado de máquina para prever
+homicídios em Belém a partir de boletins de ocorrência \cite{r16} e para prever a
+infiltração mafiosa em municípios italianos com validação fora do tempo \cite{r17}; neste
+último, os ``falsos positivos'' se parecem com municípios infiltrados ainda não detectados,
+ponto que retomamos na Seção~\ref{sec:concl}. A pergunta deste trabalho é:
+
+\begin{citacao}
+O município da Amazônia Legal tem presença de facção criminosa (2024), dado o seu porte e
+o padrão de violência registrado entre 2021 e 2023? E o modelo antecipa quais municípios
+passaram a ter facção em 2025?
+\end{citacao}
+
+A resposta final é uma prioridade de monitoramento por município, produzida por um sistema
+fuzzy que recebe as probabilidades das Etapas 4 e 5 (Figura~\ref{fig:pipeline}). A
+prioridade não é uma acusação: indica onde a inteligência policial teria mais chance de
+encontrar atuação de facção.
+
+\begin{figure}[htbp]
 \centering
+\caption{Pipeline integrado}\label{fig:pipeline}
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[node distance=0.35cm and 0.45cm,
   bx/.style={draw,rounded corners,align=center,font=\footnotesize,minimum height=1.0cm,text width=2.05cm,fill=blue!6},
   dt/.style={draw,rounded corners,align=center,font=\footnotesize,minimum height=1.0cm,text width=2.2cm,fill=gray!12},
@@ -72,56 +141,32 @@ onde a facção tende a estar, mas não quando ela chega.
 \draw[ar] (e5)--(e6); \draw[ar] (e6)--(val); \draw[ar] (val)--(dec);
 \draw[da] (e1.north) to[bend left=18] node[above,font=\scriptsize]{ganho escolhe os pais de $F$; decisões da árvore comparadas} (e5.north);
 \draw[da] (e4.south) to[bend right=20] node[pos=0.3,left=2pt,font=\scriptsize]{$P(F)$ do NB + EM} (e6.north west);
-\end{tikzpicture}
-\caption{Pipeline integrado. As setas tracejadas indicam reutilização: o ganho da Etapa 1
-define os pais de \F{} na rede, cujas decisões são comparadas às da árvore; a $P(F)$ do Naive
-Bayes + EM (Etapa 4) entra, com a da rede, na presença do sistema fuzzy.}\label{fig:pipeline}
-\end{figure*}
-
-%=====================================================================
-\section{Introdução}
-
-Nas duas últimas décadas, facções criminosas nascidas no Sudeste (PCC e Comando Vermelho)
-e grupos regionais se espalharam pela Amazônia, atraídos pelas rotas fluviais e terrestres
-da cocaína produzida na Bolívia, no Peru e na Colômbia \cite{r11} e pelo sistema prisional,
-onde se organizam \cite{r10}. A literatura descreve uma interiorização das facções na
-região, ligada também ao garimpo ilegal \cite{r12,r13}. O \emph{Cartografias da Violência
-na Amazônia}, do Fórum Brasileiro de Segurança Pública com o Instituto Mãe Crioula, mapeia
-município a município quais facções atuam na região: na 3ª edição (dados de 2024) havia
-registro em 259 dos 808 municípios dos nove estados; na 4ª edição (2025), em 344.
-
-Esse mapeamento depende de trabalho de campo e de fontes policiais e não é atualizado
-continuamente. As estatísticas de violência, por outro lado, são publicadas todo ano pelo
-Ministério da Justiça. Trabalhos próximos usam aprendizado de máquina para prever
-homicídios em Belém a partir de boletins de ocorrência \cite{r16} e para prever a
-infiltração mafiosa em municípios italianos com validação fora do tempo \cite{r17}; neste
-último, os ``falsos positivos'' se parecem com municípios infiltrados ainda não detectados,
-ponto que retomamos na Seção~\ref{sec:concl}. A pergunta deste trabalho é:
-
-\begin{quote}\itshape
-O município da Amazônia Legal tem presença de facção criminosa (2024), dado o seu porte e
-o padrão de violência registrado entre 2021 e 2023? E o modelo antecipa quais municípios
-passaram a ter facção em 2025?
-\end{quote}
-
-A resposta final é uma prioridade de monitoramento por município, produzida por um sistema
-fuzzy que recebe as probabilidades das Etapas 4 e 5. A prioridade não é uma
-acusação: indica onde a inteligência policial teria mais chance de encontrar atuação de
-facção.
+\end{tikzpicture}}
+\begin{flushleft}\footnotesize
+Nota: as setas tracejadas indicam reutilização: o ganho da Etapa 1 define os pais de \F{}
+na rede, cujas decisões são comparadas às da árvore; a $P(F)$ do Naive Bayes + EM (Etapa 4)
+entra, com a da rede, na presença do sistema fuzzy.
+\end{flushleft}
+\fonteautores
+\end{figure}
 
 %=====================================================================
 \section{Dados e protocolo de validação}
 
 \paragraph{Fontes.} (i) Rótulos: Cartografias, 3ª edição \cite{r4} (Tabelas 13--21,
 presença em 2024) e 4ª edição \cite{r5} (quadros por estado, extraídos do PDF com
-\texttt{extrair\_cartografias\_2025.py}). (ii) Atributos: Banco VDE do SINESP/MJSP
-\cite{r6}, 2020--2024, por município (homicídio doloso, tentativa, morte a esclarecer,
-latrocínio, mandados). (iii) População: IBGE, Censo 2022 e estimativas \cite{r7}, unida
-pelo código do município. Os 5.570 municípios do VDE casaram com o IBGE; os 808 dos 9
+\texttt{extrair\_cartografias\_2025.py}). (ii) Atributos: Validador de Dados Estatísticos
+(VDE) do Sistema Nacional de Informações de Segurança Pública (SINESP), mantido pelo
+Ministério da Justiça e Segurança Pública (MJSP) \cite{r6}, 2020--2024, por município
+(homicídio doloso, tentativa, morte a esclarecer, latrocínio, mandados). (iii) População:
+Instituto Brasileiro de Geografia e Estatística (IBGE), Censo 2022 e estimativas \cite{r7},
+unida pelo código do município. Os 5.570 municípios do VDE casaram com o IBGE; os 808 dos 9
 estados casaram com o Cartografias. (iv) Bases externas, usadas na análise do garimpo e nos
-experimentos (Seção~\ref{sec:exp}): autos de infração e termos de destruição do IBAMA
-\cite{r8}, alertas do DETER/INPE \cite{r9}, faixa de fronteira, malha municipal e REGIC do
-IBGE \cite{r7}, todos de 2021--23 e agregados por município
+experimentos (Seção~\ref{sec:exp}): autos de infração e termos de destruição do Instituto
+Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (IBAMA) \cite{r8}, alertas do
+sistema de Detecção de Desmatamento em Tempo Real (DETER) do Instituto Nacional de Pesquisas
+Espaciais (INPE) \cite{r9}, faixa de fronteira, malha municipal e Regiões de Influência das
+Cidades (REGIC) do IBGE \cite{r7}, todos de 2021--23 e agregados por município
 (\texttt{montar\_bases\_externas.py}). Dos arquivos do IBAMA, que identificam os autuados,
 guardamos só contagens por município.
 
@@ -129,9 +174,10 @@ guardamos só contagens por município.
 interpretáveis (Tabela~\ref{tab:attr}). As taxas são médias anuais de 2021--23 por 100 mil
 habitantes (Censo 2022).
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
-\begin{tabular}{@{}lp{5.6cm}@{}}
+\caption{Atributos e alvo}\label{tab:attr}
+\begin{tabular}{@{}lp{10cm}@{}}
 \toprule
 Variável & Definição\\
 \midrule
@@ -140,11 +186,11 @@ Variável & Definição\\
 \texttt{TXT} & taxa de tentativas de homicídio 2021--23, em tercis\\
 \texttt{ESC} & teve morte a esclarecer em 2021--23\\
 \texttt{LATRO} & teve latrocínio em 2021--23\\
-\texttt{UF/FRONT} & estado / estado faz fronteira com outro país\\
+\texttt{UF/FRONT} & estado (unidade da federação) / estado faz fronteira com outro país\\
 \texttt{ALVO} & facção registrada em 2024 (32,1\%)\\
 \bottomrule
 \end{tabular}
-\caption{Atributos e alvo.}\label{tab:attr}
+\fontedados
 \end{table}
 
 \paragraph{Validação.} Sempre com \texttt{seed = 42}: (a) validação cruzada estratificada
@@ -152,8 +198,12 @@ de 5 dobras, recalculando os tercis de \texttt{TXH} e \texttt{TXT} com os cortes
 de cada dobra, para o teste não influenciar a discretização; (b) \emph{deixando um estado
 de fora} (treina com 8, testa no 9º); (c) \emph{fora do tempo}: entre os 549 municípios sem
 facção em 2024, quais passaram a ter em 2025, rótulo que nenhum modelo viu. Como as classes
-são desbalanceadas (``sempre não'' acerta 67,9\%), reportamos também acurácia balanceada e
-AUC.
+são desbalanceadas (``sempre não'' acerta 67,9\%), reportamos também a acurácia balanceada
+(média das taxas de acerto de cada classe) e a área sob a curva ROC (AUC, do inglês
+\emph{Area Under the Receiver Operating Characteristic Curve}). A AUC é a probabilidade de
+o modelo atribuir um valor maior a um município com facção sorteado ao acaso do que a um
+sem facção: 0,5 equivale ao acaso e 1,0 a uma ordenação perfeita. Ela mede, portanto, se o
+modelo ordena bem os municípios, independentemente do limiar usado para decidir.
 
 %=====================================================================
 \section{Etapa 1 --- Árvore de decisão}
@@ -165,8 +215,9 @@ bits. Para \texttt{PORTE}, os filhos são pequeno (27/267 com facção, $H=0{,}4
 $(267\cdot0{,}473+435\cdot0{,}918+106\cdot0{,}678)/808=0{,}740$, e o ganho é
 $0{,}905-0{,}740=0{,}165$, o maior entre os seis atributos (Tabela~\ref{tab:ganho}).
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Ganho de informação na raiz (nível 1)}\label{tab:ganho}
 \begin{tabular}{@{}lcccccc@{}}
 \toprule
 & \texttt{PORTE} & \texttt{UF} & \texttt{LATRO} & \texttt{ESC} & \texttt{TXH} & \texttt{TXT}\\
@@ -174,7 +225,7 @@ $0{,}905-0{,}740=0{,}165$, o maior entre os seis atributos (Tabela~\ref{tab:ganh
 Ganho & \textbf{0,165} & 0,151 & 0,070 & 0,030 & 0,027 & 0,017\\
 \bottomrule
 \end{tabular}
-\caption{Ganho de informação na raiz (nível 1).}\label{tab:ganho}
+\fonteautores
 \end{table}
 
 No \textbf{nível 2}, em todos os três ramos de porte o melhor atributo é \texttt{UF}: ganho
@@ -187,14 +238,15 @@ aparecem: nos médios do Mato Grosso ($n=61$, $H=0{,}929$) o melhor é \texttt{T
 estado explicam a maior parte da presença de facção; a violência refina a decisão dentro de
 cada estado.
 
-\paragraph{Implementação e validação.} Implementamos o \textsc{Learn-Decision-Tree} (ID3)
-do zero e comparamos com o \texttt{DecisionTreeClassifier} (critério entropia) em 5 dobras
-(Tabela~\ref{tab:arvore}). As duas implementações sem poda dão o mesmo resultado (0,749 e
-0,745). A poda por profundidade reduz o sobreajuste: o treino cai de 87\% para 82\% e o
-teste sobe para 78,6\%. A Figura~\ref{fig:prof} mostra a curva de profundidade.
+\paragraph{Implementação e validação.} Implementamos o \textsc{Learn-Decision-Tree}
+(\emph{Iterative Dichotomiser 3}, ID3) \cite{r1} do zero e comparamos com o \texttt{DecisionTreeClassifier} (critério entropia) em
+5 dobras (Tabela~\ref{tab:arvore}). As duas implementações sem poda dão o mesmo resultado
+(0,749 e 0,745). A poda por profundidade reduz o sobreajuste: o treino cai de 87\% para
+82\% e o teste sobe para 78,6\%. A Figura~\ref{fig:prof} mostra a curva de profundidade.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Validação cruzada 5-fold (tercis calculados no treino de cada dobra)}\label{tab:arvore}
 \begin{tabular}{@{}lccc@{}}
 \toprule
 Modelo & Treino & Teste & Bal.\\
@@ -205,14 +257,14 @@ sklearn, sem poda & 0,875 & 0,745 & 0,683\\
 sklearn, prof.\ 4 & 0,799 & 0,782 & 0,679\\
 \bottomrule
 \end{tabular}
-\caption{Validação cruzada 5-fold (tercis calculados no treino de cada
-dobra).}\label{tab:arvore}
+\fonteautores
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
-\fig{../figuras/etapa1_profundidade.png}{0.95}
-\caption{Acurácia de teste por profundidade máxima.}\label{fig:prof}
+\caption{Acurácia de teste por profundidade máxima}\label{fig:prof}
+\fig{../figuras/etapa1_profundidade.png}{0.7}
+\fonteautores
 \end{figure}
 
 \paragraph{Monotonicidade.} A regra mais simples sugerida pelos dados é
@@ -232,17 +284,18 @@ de crença revisáveis.
 \paragraph{Regressão.} Como alvo contínuo usamos $y=\log(1+\text{homicídios em 2023})$. Os
 16 atributos são $\log(\text{população})$ e as contagens de 2020--2022 (em $\log(1+x)$).
 Divisão 80/20. A regressão univariada por fórmula fechada sobre os homicídios de 2022 dá
-$\hat y=0{,}282+0{,}812\,x$ ($R^2=0{,}672$). A multivariada com gradiente descendente do
+$\hat y=0{,}282+0{,}812\,x$ ($R^2=0{,}672$). A multivariada com gradiente descendente (GD) do
 zero (atributos padronizados, $\alpha=0{,}05$, 5.000 iterações) chega a $R^2=0{,}763$. Como
 os 16 atributos são muito correlacionados (o mesmo evento em três anos seguidos),
 aplicamos Ridge: o $\lambda$ escolhido por validação cruzada é 0,084, com $R^2=0{,}762$
 (Figura~\ref{fig:ridge}). À medida que $\lambda$ cresce, os coeficientes encolhem e deixam
 de oscilar entre anos correlacionados.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
-\fig{../figuras/etapa2_ridge_path.png}{0.95}
-\caption{Coeficientes do Ridge em função de $\lambda$.}\label{fig:ridge}
+\caption{Coeficientes do Ridge em função de $\lambda$}\label{fig:ridge}
+\fig{../figuras/etapa2_ridge_path.png}{0.7}
+\fonteautores
 \end{figure}
 
 \paragraph{Logística.} Para o problema da Etapa 1, implementamos a regressão logística
@@ -250,8 +303,9 @@ de oscilar entre anos correlacionados.
 0,737, idênticas ao \texttt{LogisticRegression}. Todos os modelos próprios coincidem com o
 scikit-learn até a terceira casa (Tabela~\ref{tab:lin}).
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Resultados no teste (20\%); o scikit-learn dá os mesmos valores}\label{tab:lin}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 Modelo & $R^2$ & Acurácia (bal.)\\
@@ -262,7 +316,7 @@ Ridge ($\lambda=0{,}084$) & 0,762 & --\\
 Logística (facção) & -- & 0,759 (0,737)\\
 \bottomrule
 \end{tabular}
-\caption{Resultados no teste (20\%). O scikit-learn dá os mesmos valores.}\label{tab:lin}
+\fonteautores
 \end{table}
 
 %=====================================================================
@@ -272,8 +326,9 @@ Cada município é um ``mundo''. Definimos $F$ = tem facção em 2024; $V$ = tax
 no tercil mais alto; $E$ = teve morte a esclarecer. A conjunta de $F$ e $V$ está na
 Tabela~\ref{tab:conj}.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Distribuição conjunta (4 eventos atômicos)}\label{tab:conj}
 \begin{tabular}{@{}lccc@{}}
 \toprule
 & $F=0$ & $F=1$ & $P(V)$\\
@@ -284,7 +339,7 @@ $V=1$ & 0,1918 & 0,1411 & 0,3329\\
 $P(F)$ & 0,6795 & 0,3205 & 1,0000\\
 \bottomrule
 \end{tabular}
-\caption{Distribuição conjunta (4 eventos atômicos).}\label{tab:conj}
+\fontedados
 \end{table}
 
 \paragraph{Bayes: causal $\times$ diagnóstico.} O sentido \emph{causal} é $P(V\mid F)$: a
@@ -303,9 +358,9 @@ e $E$ são independentes dado $F$: para $F=0$, $P(V,E\mid F)=0{,}204$ contra o p
 Naive Bayes é violada: os dois sintomas compartilham uma causa que não está no modelo (o
 volume de violência).
 
-\paragraph{Por que a LPO não diz ``42\% de chance''.} A fórmula
+\paragraph{Por que a lógica de primeira ordem (LPO) não diz ``42\% de chance''.} A fórmula
 $\forall x\,(\textit{ViolênciaAlta}(x)\rightarrow\textit{Facção}(x))$ é falsa, porque há
-municípios violentos sem facção; a sua negação também não serve. A lógica de primeira ordem
+municípios violentos sem facção; a sua negação também não serve. A LPO
 só atribui verdadeiro ou falso; para dizer ``em 42\% dos casos'' é preciso uma medida de
 crença, que é a probabilidade.
 
@@ -317,8 +372,9 @@ $P(\text{entrada}\mid\text{grande})=0{,}054\times0{,}235/0{,}035=0{,}368$. Tamb�
 ``saídas'', o que sugere que parte da mudança vem do método, como o próprio relatório
 admite.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Regimes de facção em 2024 e 2025 (municípios)}\label{tab:trans}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 2024 $\backslash$ 2025 & sem reg. & uma & disputa & total\\
@@ -328,7 +384,8 @@ uma facção & 32 & 126 & 16 & 174\\
 disputa & 13 & 18 & 54 & 85\\
 \bottomrule
 \end{tabular}
-\caption{Regimes de facção em 2024 e 2025 (municípios).}\label{tab:trans}
+\fonte{Elaborada pelos autores com dados do \emph{Cartografias da Violência na Amazônia},
+3ª e 4ª edições (2026).}
 \end{table}
 
 \paragraph{Garimpo e a entrada em 2025.} O garimpo ilegal é descrito como uma das economias
@@ -344,8 +401,10 @@ porte, não há diferença (médios: 37\% contra 33\%). O garimpo sinaliza \emph
 facção vai, o que a violência não capta (Seção~\ref{sec:fuzzy}). Cuidados: autuação também
 reflete onde houve fiscalização, e o DETER inclui mineração legal.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Entrada de facção em 2025 entre os municípios sem facção em 2024, segundo o
+garimpo em 2021--23}\label{tab:garimpo}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 Entrada em 2025 & IBAMA & INPE\\
@@ -356,40 +415,45 @@ Médios com garimpo & 55,6\% ($n=27$) & 60,0\% ($n=25$)\\
 Médios sem garimpo & 28,1\% & 27,9\%\\
 \bottomrule
 \end{tabular}
-\caption{Entrada de facção em 2025 entre os municípios sem facção em 2024, segundo o
-garimpo em 2021--23.}\label{tab:garimpo}
+\fonte{Elaborada pelos autores com dados do IBAMA, do INPE e do \emph{Cartografias da
+Violência na Amazônia} (2026).}
 \end{table}
 
 %=====================================================================
 \section{Etapa 4 --- MLE, MAP, Naive Bayes e EM}
 
-\paragraph{MLE e MAP.} Para $\theta=P(\text{facção})$ por estado, $\hat\theta_{MLE}=k/n$ e,
-com prior Beta(2,2), $\hat\theta_{MAP}=(k+1)/(n+2)$. Onde há poucos municípios, o MLE é
+\paragraph{MLE e MAP.} Para $\theta=P(\text{facção})$ por estado, a estimativa de máxima
+verossimilhança (MLE, do inglês \emph{Maximum Likelihood Estimation}) é
+$\hat\theta_{MLE}=k/n$ e, com prior Beta(2,2), a estimativa de máximo \emph{a posteriori}
+(MAP) é $\hat\theta_{MAP}=(k+1)/(n+2)$. Onde há poucos municípios, o MLE é
 extremo: no Acre ($k=n=22$), $\hat\theta_{MLE}=1$, o que daria probabilidade zero a um
 município sem facção; o MAP dá 0,958. Em Roraima, 0,933 contra 0,882. Nos estados grandes
 (PA, MA, MT) os dois coincidem até a segunda casa: o prior só pesa quando há pouca
 evidência.
 
-\paragraph{Naive Bayes do zero.} Com suavização de Laplace e os seis atributos da Etapa 1,
+\paragraph{Naive Bayes do zero.} Com o Naive Bayes (NB), usando suavização de Laplace e os seis atributos da Etapa 1,
 acurácia de 77,2\% e balanceada de 0,737 em 5 dobras, igual ao \texttt{CategoricalNB}.
 
 \paragraph{EM com variável oculta.} O Cartografias classifica cada município em ``sem
 registro'', ``uma facção (domínio)'' ou ``disputa''. Supomos que esse regime $Z$ é oculto e
 tentamos recuperá-lo só a partir de $x=\log(1+\text{homicídios 2021--23})$, com uma mistura
-de 3 gaussianas ajustada pelo EM (\texttt{em.py}). A log-verossimilhança cresce
+de 3 gaussianas ajustada pelo algoritmo Esperança-Maximização (EM, do inglês
+\emph{Expectation-Maximization}; \texttt{em.py}). A log-verossimilhança cresce
 monotonicamente e estabiliza em 5 iterações (Figura~\ref{fig:em}). O EM nunca vê o rótulo,
 mas os grupos acompanham o Cartografias (Tabela~\ref{tab:em}): no grupo menos violento,
 1,7\% estão em disputa; no mais violento, 29\%.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
-\fig{../figuras/etapa4_em.png}{0.98}
-\caption{EM: log-verossimilhança por iteração e mistura estimada.}\label{fig:em}
+\caption{EM: log-verossimilhança por iteração e mistura estimada}\label{fig:em}
+\fig{../figuras/etapa4_em.png}{0.85}
+\fonteautores
 \end{figure}
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
-\begin{tabular}{@{}lcccccc@{}}
+\caption{Grupos do EM e a composição segundo o Cartografias (linhas somam 1)}\label{tab:em}
+\begin{tabular}{@{}lccccc@{}}
 \toprule
 Grupo & $\theta$ & hom.\ típicos & sem reg. & uma & disputa\\
 \midrule
@@ -398,7 +462,7 @@ $Z=1$ & 0,36 & 9,2 & 0,724 & 0,219 & 0,057\\
 $Z=2$ & 0,33 & 23,1 & 0,342 & 0,370 & 0,288\\
 \bottomrule
 \end{tabular}
-\caption{Grupos do EM e a composição segundo o Cartografias (linhas somam 1).}\label{tab:em}
+\fontedados
 \end{table}
 
 Com a \emph{taxa} por 100 mil no lugar da contagem, a correspondência é mais fraca (o grupo
@@ -416,17 +480,21 @@ da dobra (AUC 0,84), é gravada para a Etapa 6.
 %=====================================================================
 \section{Etapa 5 --- Rede bayesiana}
 
-\paragraph{Estrutura.} O DAG (Figura~\ref{fig:dag}) tem 6 nós. Os pais de \F{} são os dois
-atributos de maior ganho na árvore da Etapa 1: \texttt{PORTE} e \texttt{UF}, esta resumida em
-\texttt{FRONT} para a CPT não ter linhas com 1 ou 2 municípios. \texttt{PORTE}$\to$\F:
+\paragraph{Estrutura.} O grafo acíclico dirigido (DAG, do inglês \emph{Directed Acyclic
+Graph}) da Figura~\ref{fig:dag} tem 6 nós. Os pais de \F{} são os dois atributos de maior
+ganho na árvore da Etapa 1: \texttt{PORTE} e \texttt{UF}, esta resumida em \texttt{FRONT}
+para a tabela de probabilidade condicional (CPT, do inglês \emph{Conditional Probability
+Table}) de \F{} não ter linhas com 1 ou 2 municípios. \texttt{PORTE}$\to$\F:
 cidades maiores concentram mercado consumidor, portos, rodovias e presídios \cite{r10}.
 \texttt{FRONT}$\to$\F: as fronteiras e suas cidades são nós da rede da cocaína \cite{r11}.
 \F$\to$\{\texttt{TXH}, \texttt{ESC}, \texttt{TXT}\}: disputas e execuções elevam
 homicídios, tentativas e mortes sem causa esclarecida. A rede é usada no sentido
 diagnóstico: observamos porte, estado e sintomas e inferimos $P(\F\mid\text{evidências})$.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
+\caption{DAG: \F{} é colisor de \texttt{PORTE} e \texttt{FRONT} e causa comum dos três
+sintomas}\label{fig:dag}
 \begin{tikzpicture}[n/.style={draw,ellipse,font=\footnotesize,minimum width=1.3cm,inner sep=2pt},
   ar/.style={-{Stealth[length=2mm]},thick}]
 \node[n] (p) at (-1.5,1.4) {PORTE};
@@ -437,8 +505,7 @@ diagnóstico: observamos porte, estado e sintomas e inferimos $P(\F\mid\text{evi
 \node[n] (t) at (2,-1.1) {TXT};
 \draw[ar] (p)--(c); \draw[ar] (f)--(c); \draw[ar] (c)--(h); \draw[ar] (c)--(e); \draw[ar] (c)--(t);
 \end{tikzpicture}
-\caption{DAG: \F{} é colisor de \texttt{PORTE} e \texttt{FRONT} e causa comum dos três
-sintomas.}\label{fig:dag}
+\fonteautores
 \end{figure}
 
 \paragraph{CPTs e economia.} As CPTs são estimadas por máxima verossimilhança. A tabela
@@ -482,8 +549,9 @@ Roraima a $P$ média prevista é cerca de 0,47, porque \texttt{FRONT} só distin
 demais. Serve para ordenar municípios num estado conhecido, não para estimar o nível num
 estado novo.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Validação deixando um estado de fora}\label{tab:uf}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 UF & $n$ & facção & $P$ média & AUC\\
@@ -499,7 +567,7 @@ MA & 217 & 0,22 & 0,21 & 0,79\\
 TO & 139 & 0,06 & 0,11 & 0,94\\
 \bottomrule
 \end{tabular}
-\caption{Validação deixando um estado de fora.}\label{tab:uf}
+\fonteautores
 \end{table}
 
 \paragraph{Sensibilidade ao rótulo.} Sem os 45 municípios que ``saíram'' da lista em 2025,
@@ -511,17 +579,20 @@ conclusões não dependem do ruído do rótulo.
 %=====================================================================
 \section{Etapa 6 --- Lógica fuzzy e integração}\label{sec:fuzzy}
 
-\paragraph{Variáveis linguísticas.} O sistema Mamdani (\texttt{scikit-fuzzy}) tem duas
-entradas: \emph{presença} = média da $P(F)$ da rede (Etapa 5) e da do NB + EM (Etapa 4),
-ambas fora da dobra (baixa, média, alta, centradas em torno da taxa-base de 32\%) e \emph{tendência} = variação relativa dos homicídios de 2020--21 para
-2022--23 (queda, estável, alta). A saída é a \emph{prioridade} de monitoramento, de 0 a 100
-(Figura~\ref{fig:pert}). Todas as funções de pertinência são triangulares, que em sistemas
-Mamdani para nível de criminalidade classificaram melhor do que as trapezoidais \cite{r19}.
+\paragraph{Variáveis linguísticas.} O sistema Mamdani (\texttt{scikit-fuzzy}), baseado na
+teoria dos conjuntos fuzzy \cite{r2}, tem duas entradas: \emph{presença} = média da $P(F)$
+da rede (Etapa 5) e da do NB + EM (Etapa 4), ambas fora da dobra (baixa, média, alta,
+centradas em torno da taxa-base de 32\%) e \emph{tendência} = variação relativa dos
+homicídios de 2020--21 para 2022--23 (queda, estável, alta). A saída é a \emph{prioridade}
+de monitoramento, de 0 a 100 (Figura~\ref{fig:pert}). Todas as funções de pertinência são
+triangulares, que em sistemas Mamdani para nível de criminalidade classificaram melhor do
+que as trapezoidais \cite{r19}.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
-\fig{../figuras/etapa6_pertinencia.png}{0.98}
-\caption{Funções de pertinência.}\label{fig:pert}
+\caption{Funções de pertinência}\label{fig:pert}
+\fig{../figuras/etapa6_pertinencia.png}{0.85}
+\fonteautores
 \end{figure}
 
 \paragraph{Regras.}
@@ -543,8 +614,9 @@ prioridade baixa para a alta, e a de disputa, de 1,6\% para 28,4\%. Entre os 549
 em 2024, a taxa de entrada em 2025 vai de 14\% na baixa para 45\% na alta. É uma validação
 fora do tempo: nenhum dado de 2025 foi usado.
 
-\begin{table}[t]
+\begin{table}[htbp]
 \centering\small
+\caption{Prioridade fuzzy conferida com o rótulo de 2024 e com as entradas de 2025}\label{tab:fuzzy}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Prioridade & Munic. & Facção 2024 & Disputa & Entrada 2025$^*$\\
@@ -554,9 +626,12 @@ Média & 146 & 37,0\% & 7,5\% & 42,4\%\\
 Alta & 236 & 64,4\% & 28,4\% & 45,2\%\\
 \bottomrule
 \end{tabular}
-\caption{$^*$Entre os municípios sem facção em 2024. AUC (facção 2024 / entrada 2025): rede
+\begin{flushleft}\footnotesize
+Nota: $^*$entre os municípios sem facção em 2024. AUC (facção 2024 / entrada 2025): rede
 0,809 / 0,764; NB + EM 0,840 / 0,728; presença (média) 0,836 / 0,753; prioridade fuzzy
-0,815 / 0,749.}\label{tab:fuzzy}
+0,815 / 0,749.
+\end{flushleft}
+\fonteautores
 \end{table}
 
 A média com o NB + EM melhora a ordenação de 2024 (o NB usa a UF inteira), mas não a da
@@ -572,11 +647,12 @@ ruidoso (``sem registro'' não é ausência certa) e a fronteira entre as classe
 são exatamente os casos em que o fuzzy supera o limiar rígido. A tendência também desloca a
 prioridade, o que um limiar sobre $P$ não faz.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
-\fig{../figuras/etapa6_fuzzy_vs_rigido.png}{0.98}
 \caption{Prioridade fuzzy em função de $P(F)$ para três tendências, contra o limiar
-rígido.}\label{fig:sup}
+rígido}\label{fig:sup}
+\fig{../figuras/etapa6_fuzzy_vs_rigido.png}{0.85}
+\fonteautores
 \end{figure}
 
 \paragraph{A violência de 2024 antecipa a chegada?} Com o VDE de 2024, testamos duas
@@ -593,52 +669,6 @@ entende e pode contestar, e cada entrada tem origem rastreável: a presença vem
 Naive Bayes (ambos tabelas de frequência) e a tendência vem direto do VDE.
 
 %=====================================================================
-\section{Experimentos com outras variáveis}\label{sec:exp}
-
-O enunciado limita a árvore a 4--6 atributos e a rede a 4--6 nós, e o pipeline já usa 6.
-Testamos então 15 variáveis candidatas \emph{trocando} um nó da rede (em geral \texttt{ESC}),
-com as mesmas validações (\texttt{experimentos\_variaveis.ipynb}); a
-Tabela~\ref{tab:var} resume.
-
-\begin{table}[t]
-\centering\footnotesize
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Variável na rede & 2024 & Estado fora & Entrada 2025\\
-\midrule
-Atual & 0,810 & 0,800 & \textbf{0,764}\\
-Faixa de fronteira no lugar de \texttt{FRONT} & \textbf{0,837} & \textbf{0,811} & 0,708\\
-Vizinho com facção (malha IBGE) & 0,819 & 0,800 & 0,742\\
-Urbanização (Censo 2022) & 0,819 & 0,788 & 0,731\\
-Hierarquia urbana (REGIC) & 0,807 & 0,787 & 0,751\\
-Latrocínio, feminicídio, mandados & 0,81--0,82 & 0,80--0,81 & 0,73--0,76\\
-Suicídio, trânsito (placebos) & 0,813--0,815 & 0,80 & 0,752\\
-Garimpo IBAMA / INPE & 0,813 / 0,809 & 0,79--0,80 & 0,747\\
-Desmatamento (DETER) & 0,808 & 0,796 & 0,733\\
-\bottomrule
-\end{tabular}}
-\caption{AUC da rede com cada variável candidata (probabilidades fora da
-dobra).}\label{tab:var}
-\end{table}
-
-\paragraph{Fronteira por município.} Trocar \texttt{FRONT} por estado pela faixa de
-fronteira do IBGE melhora o diagnóstico (AUC 0,84) e corrige boa parte do erro de nível: com
-o estado de fora, a $P$ média prevista sobe para 0,68 no Acre e 0,70 em Roraima. Mas a
-previsão da entrada em 2025 cai para 0,71: nos estados de fronteira, a expansão foi tão
-frequente no interior (38\%) quanto na faixa (36\%), e a variável municipal rebaixa
-justamente o interior do Pará, do Mato Grosso e do Amazonas. Como o objetivo final é
-antecipar a expansão, mantivemos \texttt{FRONT} por estado.
-
-\paragraph{As demais.} Nenhuma muda a AUC de 2024 em mais de 0,01, e todas pioram a entrada
-em 2025. Os placebos (suicídio, trânsito) rendem tanto quanto as variáveis de violência: os
-sintomas da rede carregam sobretudo o tamanho e a urbanização do município. Vizinhos,
-urbanização e hierarquia urbana repetem o que porte e estado já dizem. Numa logística só
-para a entrada em 2025, nenhuma variável eleva a AUC (0,779) além do desvio entre dobras
-(0,05). O garimpo dobra a taxa de entrada, mas atinge só cerca de 40 dos 549 municípios,
-pouco para mudar a AUC do conjunto.
-
-%=====================================================================
 \section{Discussão}
 
 A Tabela~\ref{tab:ref} compara os resultados com as faixas de referência do enunciado.
@@ -651,8 +681,17 @@ que dominam sem violência. O EM converge em 5 iterações (contagem) ou 38 (tax
 faixa de 15--30, porque a tolerância é relativa ($10^{-4}$); a curva cresce
 monotonicamente, como esperado.
 
-\begin{table}[t]
+\paragraph{Outras variáveis.}\label{sec:exp} Testamos ainda 15 variáveis de outras bases
+(IBGE, INPE, IBAMA), trocando um nó da rede (\texttt{experimentos\_variaveis.ipynb}).
+Nenhuma melhorou a AUC de 2024 em mais de 0,01, e placebos como suicídio e trânsito
+renderam tanto quanto a violência: os sintomas carregam sobretudo o tamanho do município. A
+faixa de fronteira por município corrige o erro de nível no Acre e em Roraima (AUC 0,84),
+mas piora a previsão de 2025 (0,71), porque a expansão foi tão frequente no interior quanto
+na faixa; por isso mantivemos \texttt{FRONT} por estado.
+
+\begin{table}[htbp]
 \centering\small
+\caption{Resultados obtidos $\times$ faixas de referência do enunciado}\label{tab:ref}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 Métrica & Esperado & Obtido\\
@@ -669,7 +708,7 @@ Naive Bayes + EM & 80--86\% & 77,7\%\\
 Enumeração = \texttt{pgmpy} & idêntico & dif.\ $10^{-16}$\\
 \bottomrule
 \end{tabular}
-\caption{Resultados obtidos $\times$ faixas de referência do enunciado.}\label{tab:ref}
+\fonteautores
 \end{table}
 
 O fio condutor do pipeline é a passagem da certeza à incerteza graduada. A árvore produz
@@ -767,63 +806,18 @@ acusação. Modelos treinados com registros de fiscalização tendem a prever on
 fiscalização, e não só onde há crime \cite{r20}; isso vale para o Cartografias e para os
 autos do IBAMA. Municípios com prioridade alta e sem registro (por exemplo, Oriximiná, PA,
 com $P=0{,}92$) são candidatos a verificação, não municípios ``dominados'': como nos
-``falsos positivos'' de \cite{r17}, podem ser municípios com facção ainda não registrada.
-Rotular publicamente uma localidade pode gerar estigma e afetar investimento e turismo; por
-isso a lista de candidatos fica restrita ao notebook.
+``falsos positivos'' do estudo sobre a máfia italiana \cite{r17}, podem ser municípios com facção ainda não
+registrada. Rotular publicamente uma localidade pode gerar estigma e afetar investimento e
+turismo; por isso a lista de candidatos fica restrita ao notebook.
 
 %=====================================================================
-\begin{thebibliography}{99}\footnotesize
-\setlength{\itemsep}{0pt}
-\bibitem{r1} S. Russell e P. Norvig. \emph{Artificial Intelligence: A Modern Approach}, 4.\ ed.
-Pearson, 2020 (caps.\ 18--20).
-\bibitem{r2} L. A. Zadeh. Fuzzy sets. \emph{Information and Control}, 8(3):338--353, 1965.
-\bibitem{r3} E. Hüllermeier. Fuzzy machine learning and data mining. \emph{WIREs DMKD},
-1(4):269--283, 2011.
-\bibitem{r4} Instituto Mãe Crioula e Fórum Brasileiro de Segurança Pública.
-\emph{Cartografias da Violência na Amazônia}, 3.\ ed., 2024.
-\bibitem{r5} Instituto Mãe Crioula e Fórum Brasileiro de Segurança Pública.
-\emph{Cartografias da Violência na Amazônia}, 4.\ ed., 2025.
-\bibitem{r6} Ministério da Justiça e Segurança Pública. Banco VDE (SINESP), 2020--2024.
-\url{https://dadosabertos.mj.gov.br}. Acesso em out.\ 2026.
-\bibitem{r7} IBGE. Censo Demográfico 2022, Estimativas da População, Municípios da Faixa de
-Fronteira 2024, Malha Municipal e REGIC 2018. \url{https://www.ibge.gov.br}. Acesso em nov.\
-2026.
-\bibitem{r8} IBAMA. Dados abertos: autos de infração e termos de destruição.
-\url{https://dadosabertos.ibama.gov.br}. Acesso em nov.\ 2026.
-\bibitem{r9} INPE. DETER Amazônia, TerraBrasilis. \url{https://terrabrasilis.dpi.inpe.br}.
-Acesso em nov.\ 2026.
-\bibitem{r10} Í. B. L. Siqueira e L. F. S. Paiva. ``No Norte tem Comando'': as maneiras de
-fazer o crime, a guerra e o domínio das prisões do Amazonas. \emph{Revista Brasileira de
-Sociologia}, 7(17):125--154, 2019. DOI 10.20336/rbs.486.
-\bibitem{r11} A. C. O. Couto. Fronteiras e estrutura espacial do narcotráfico na Amazônia.
-\emph{Boletim Gaúcho de Geografia}, 47(1), 2020.
-\bibitem{r12} A. C. O. Couto. Relações transfronteiriças do narcotráfico na Amazônia: dos
-crimes conexos aos desafios da segurança regional. \emph{Boletim de Análise
-Político-Institucional (Ipea)}, 36, 2024. DOI 10.38116/bapi36art5.
-\bibitem{r13} R. P. Chagas. O ``narcogarimpo'' na Terra Indígena Yanomami. \emph{Boletim de
-Análise Político-Institucional (Ipea)}, 36, 2024. DOI 10.38116/bapi36art7.
-\bibitem{r14} R. Pereira-Chagas. Narcogarimpo: las afinidades electivas entre los frentes de
-minería ilegal y la expansión del narcotráfico en la Amazonía brasileña. \emph{URVIO},
-38:32--48, 2024. DOI 10.17141/urvio.38.2024.6144.
-\bibitem{r15} P. V. A. Sales, L. C. Sena, F. C. Bezerra Neto e C. M. A. Mello. O impacto da
-criação da facção Revolucionários do Amazonas (RDA) nos índices de violência letal em
-Iranduba-AM no período de 2017 a 2024. \emph{Revista Geopolítica Transfronteiriça},
-9(4):1--15, 2025.
-\bibitem{r16} J. Ribeiro, L. Meneses, D. Costa, W. Miranda e R. Alves. Prediction of Homicides
-in Urban Centers: A Machine Learning Approach. \emph{IntelliSys}, 2021. arXiv:2008.06979.
-\bibitem{r17} G. M. Campedelli, G. Daniele e M. Le Moglie. Mafia, Politics and Machine
-Predictions. CEPR Discussion Paper 19322, 2024.
-\bibitem{r18} C. Elkan e K. Noto. Learning Classifiers from Only Positive and Unlabeled Data.
-\emph{KDD}, p.\ 213--220, 2008.
-\bibitem{r19} N. M. Mohamad Noor e S. H. Ab Hamid. Comparison of Triangular and Trapezoidal
-Membership Functions for Improving Decision Making in Crime Prevention. \emph{Frontiers in
-Artificial Intelligence and Applications}, 261, 2014. DOI 10.3233/978-1-61499-399-5-69.
-\bibitem{r20} K. Lum e W. Isaac. To Predict and Serve? \emph{Significance}, 13(5):14--19,
-2016.
-\end{thebibliography}
+\postextual
 
-%=====================================================================
-\appendix
+\nocite{r3}
+\bibliography{referencias}
+
+\begin{apendicesenv}
+
 \section{Uso de assistente de IA}
 
 Usamos um assistente de IA (Claude, via Claude Code) como apoio à implementação do código e
@@ -860,7 +854,9 @@ ajudou a preparar o relatório em \LaTeX, o README e os notebooks para a entrega
 
 \texttt{pip install -r requirements.txt}; \texttt{python utils.py}; executar
 \texttt{etapa1.ipynb} a \texttt{etapa6.ipynb} em ordem (a Etapa 5 grava
-\texttt{dados/probabilidades\_bayesianas.csv}, lido pela Etapa 6). Repositório:
+\url{dados/probabilidades_bayesianas.csv}, lido pela Etapa 6). Repositório:
 \url{https://github.com/RomarioAndrade/seguranca-publica-ml-fuzzy}.
+
+\end{apendicesenv}
 
 \end{document}
