@@ -408,7 +408,11 @@ registro'', ``uma facção (domínio)'' ou ``disputa''. Supomos que esse regime 
 tentamos recuperá-lo só a partir de $x=\log(1+\text{homicídios 2021--23})$, com uma mistura
 de 3 gaussianas ajustada pelo algoritmo Esperança-Maximização (EM, do inglês
 \emph{Expectation-Maximization}; \texttt{em.py}). A log-verossimilhança cresce
-monotonicamente e estabiliza em 5 iterações (Figura~\ref{fig:em}). O EM nunca vê o rótulo,
+monotonicamente e atinge o critério de parada (variação relativa menor que $10^{-4}$) em 5
+iterações (Figura~\ref{fig:em}). Com $10^{-6}$, o EM leva 358 iterações e a
+log-verossimilhança sobe de $-1347{,}5$ para $-1327{,}6$: o grupo menos violento passa a
+reunir só os 52 municípios sem homicídio, mas o grupo mais violento continua com os mesmos
+219 municípios e a mesma composição. O EM nunca vê o rótulo,
 mas os grupos acompanham o Cartografias (Tabela~\ref{tab:em}): no grupo menos violento,
 1,7\% estão em disputa; no mais violento, 29\%.
 
@@ -646,9 +650,10 @@ NB + EM. A razão é o próprio problema: a taxa-base é 32\%, os atributos púb
 e população) só capturam parte do fenômeno e o rótulo só tem positivos confiáveis
 (Seção~\ref{sec:concl}). A AUC de 0,81 mostra que os modelos ordenam bem os municípios; o
 que limita a acurácia é a sobreposição real entre municípios violentos sem facção e facções
-que dominam sem violência. O EM converge em 5 iterações (contagem) ou 38 (taxa), fora da
-faixa de 15--30, porque a tolerância é relativa ($10^{-4}$); a curva cresce
-monotonicamente, como esperado.
+que dominam sem violência. O EM atinge o critério de parada em 5 iterações (contagem) ou 38
+(taxa), fora da faixa de 15--30, porque a tolerância é relativa ($10^{-4}$). Com uma
+tolerância mais rígida ($10^{-6}$) ele vai a 358 iterações, sem mudar o grupo mais violento,
+que é o que importa para a facção; a curva cresce monotonicamente, como esperado.
 
 \paragraph{Outras variáveis.}\label{sec:exp} Testamos ainda 15 variáveis de outras bases
 (IBGE, INPE, IBAMA), trocando um nó da rede (\texttt{experimentos\_variaveis.ipynb}).
