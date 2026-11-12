@@ -161,8 +161,8 @@ Ministério da Justiça e Segurança Pública (MJSP) \cite{r6}, 2020--2024, por 
 (homicídio doloso, tentativa, morte a esclarecer, latrocínio, mandados). (iii) População:
 Instituto Brasileiro de Geografia e Estatística (IBGE), Censo 2022 e estimativas \cite{r7},
 unida pelo código do município. Os 5.570 municípios do VDE casaram com o IBGE; os 808 dos 9
-estados casaram com o Cartografias. (iv) Bases externas, usadas na análise do garimpo e nos
-experimentos (Seção~\ref{sec:exp}): autos de infração e termos de destruição do Instituto
+estados casaram com o Cartografias. (iv) Bases externas, usadas nos experimentos
+(Seção~\ref{sec:exp}): autos de infração e termos de destruição do Instituto
 Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (IBAMA) \cite{r8}, alertas do
 sistema de Detecção de Desmatamento em Tempo Real (DETER) do Instituto Nacional de Pesquisas
 Espaciais (INPE) \cite{r9}, faixa de fronteira, malha municipal e Regiões de Influência das
@@ -386,37 +386,6 @@ disputa & 13 & 18 & 54 & 85\\
 \end{tabular}
 \fonte{Elaborada pelos autores com dados do \emph{Cartografias da Violência na Amazônia},
 3ª e 4ª edições (2026).}
-\end{table}
-
-\paragraph{Garimpo e a entrada em 2025.} O garimpo ilegal é descrito como uma das economias
-exploradas pelas facções na região, no que se convencionou chamar de ``narcogarimpo''
-\cite{r13,r14}. Medimos o garimpo em 2021--23 por duas fontes independentes: auto de
-infração do IBAMA por garimpo ou mineração ilegal (71 municípios) e alerta do DETER/INPE da
-classe mineração (76). Entre os 549 sem facção em 2024 (Tabela~\ref{tab:garimpo}), os que
-tinham garimpo tiveram o dobro de entradas em 2025 nas duas fontes (teste exato de Fisher,
-$p=0{,}001$ e $0{,}003$). Por Bayes, com a fonte IBAMA,
-$P(\text{entrada}\mid G)=P(G\mid\text{entrada})P(\text{entrada})/P(G)=0{,}147\times0{,}235/0{,}077=0{,}45$.
-Já a associação com a facção \emph{existente} em 2024 é fraca: pelo IBAMA, dentro do mesmo
-porte, não há diferença (médios: 37\% contra 33\%). O garimpo sinaliza \emph{para onde} a
-facção vai, o que a violência não capta (Seção~\ref{sec:fuzzy}). Cuidados: autuação também
-reflete onde houve fiscalização, e o DETER inclui mineração legal.
-
-\begin{table}[htbp]
-\centering\small
-\caption{Entrada de facção em 2025 entre os municípios sem facção em 2024, segundo o
-garimpo em 2021--23}\label{tab:garimpo}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-Entrada em 2025 & IBAMA & INPE\\
-\midrule
-Com garimpo & 45,2\% & 44,7\%\\
-Sem garimpo & 21,7\% & 21,9\%\\
-Médios com garimpo & 55,6\% ($n=27$) & 60,0\% ($n=25$)\\
-Médios sem garimpo & 28,1\% & 27,9\%\\
-\bottomrule
-\end{tabular}
-\fonte{Elaborada pelos autores com dados do IBAMA, do INPE e do \emph{Cartografias da
-Violência na Amazônia} (2026).}
 \end{table}
 
 %=====================================================================
@@ -783,8 +752,7 @@ criminosas representam fenômenos distintos, que não devem ser tratados como eq
 O porte do município e o estado explicam a maior parte da presença registrada de facção na
 Amazônia Legal; a violência refina essa estimativa. A probabilidade calculada com dados até
 2023 antecipa parte da expansão observada em 2025 (AUC 0,76), mas a violência indica onde a
-facção tende a estar, não quando ela chega. O garimpo, medido pelo IBAMA e pelo INPE, é a
-pista mais clara de para onde ela vai: dobra a taxa de entrada em 2025. Das 15 variáveis de
+facção tende a estar, não quando ela chega. Das 15 variáveis de
 outras bases que testamos, nenhuma melhorou os modelos de forma consistente; o limite parece
 estar no rótulo, não na falta de atributos.
 
@@ -803,8 +771,8 @@ por município corrige o erro de nível em AC e RR, mas piora a previsão de 202
 
 \paragraph{Ética.} A saída é uma prioridade estatística para orientar monitoramento, não uma
 acusação. Modelos treinados com registros de fiscalização tendem a prever onde há
-fiscalização, e não só onde há crime \cite{r20}; isso vale para o Cartografias e para os
-autos do IBAMA. Municípios com prioridade alta e sem registro (por exemplo, Oriximiná, PA,
+fiscalização, e não só onde há crime \cite{r20}; isso vale também para o Cartografias.
+Municípios com prioridade alta e sem registro (por exemplo, Oriximiná, PA,
 com $P=0{,}92$) são candidatos a verificação, não municípios ``dominados'': como nos
 ``falsos positivos'' do estudo sobre a máfia italiana \cite{r17}, podem ser municípios com facção ainda não
 registrada. Rotular publicamente uma localidade pode gerar estigma e afetar investimento e

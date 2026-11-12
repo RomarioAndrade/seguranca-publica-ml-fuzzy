@@ -1,8 +1,8 @@
 """
 montar_bases_externas.py — variáveis de outras bases abertas, por município, para os experimentos.
 
-Gera dados/variaveis_externas_municipio.csv (808 municípios), usado em experimentos_variaveis.ipynb
-e na seção de garimpo da Etapa 3. Os arquivos brutos são baixados para dados/brutos/ (fora do git)
+Gera dados/variaveis_externas_municipio.csv (808 municípios), usado em experimentos_variaveis.ipynb.
+Os arquivos brutos são baixados para dados/brutos/ (fora do git)
 e reaproveitados se já existirem.
 
 Fontes (acesso em nov. 2026):
