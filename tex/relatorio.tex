@@ -322,9 +322,11 @@ Logística (facção) & -- & 0,759 (0,737)\\
 %=====================================================================
 \section{Etapa 3 --- Probabilidade}
 
-Cada município é um ``mundo''. Definimos $F$ = tem facção em 2024; $V$ = taxa de homicídio
-no tercil mais alto; $E$ = teve morte a esclarecer. A conjunta de $F$ e $V$ está na
-Tabela~\ref{tab:conj}.
+Cada município é tratado como um ``mundo'' possível, descrito por três variáveis binárias:
+$F$ = tem facção em 2024; $V$ = violência alta, isto é, taxa de homicídio de 2021--23 no
+tercil mais alto (acima de 28,6 por 100 mil habitantes ao ano); $E$ = teve ao menos uma
+morte a esclarecer em 2021--23. A Tabela~\ref{tab:conj} dá a distribuição conjunta de $F$ e
+$V$: cada célula é a fração dos 808 municípios com aquela combinação.
 
 \begin{table}[htbp]
 \centering\small
@@ -342,35 +344,51 @@ $P(F)$ & 0,6795 & 0,3205 & 1,0000\\
 \fontedados
 \end{table}
 
-\paragraph{Bayes: causal $\times$ diagnóstico.} O sentido \emph{causal} é $P(V\mid F)$: a
-facção provoca disputas e execuções. Nos dados, $P(V{=}1\mid F{=}1)=0{,}440$. O analista,
-porém, observa o efeito e quer a causa oculta, o sentido \emph{diagnóstico}:
+\paragraph{Bayes: do sentido causal ao diagnóstico.} A facção provoca violência (disputas,
+execuções), então o sentido \emph{causal} é $P(V\mid F)$: entre os municípios com facção,
+44,0\% têm violência alta. O analista faz o caminho inverso: observa a violência e quer
+saber se há uma facção por trás, o sentido \emph{diagnóstico}. A regra de Bayes inverte a
+condicional:
 \[
 P(F\mid V)=\frac{P(V\mid F)\,P(F)}{P(V)}=\frac{0{,}440\times0{,}3205}{0{,}3329}=0{,}424,
 \]
-contra $P(F\mid\neg V)=0{,}269$: a taxa alta multiplica a chance por 1,6. A conferência
-direta na tabela dá o mesmo valor.
+o mesmo valor da leitura direta da tabela ($0{,}1411/0{,}3329$). Sem violência alta, a
+proporção cai para $P(F\mid\neg V)=0{,}1795/0{,}6671=0{,}269$. A violência alta multiplica a
+chance de facção por 1,6, mas não é prova: 58\% dos municípios violentos não têm facção
+registrada.
 
-\paragraph{Regra da cadeia.} $P(F,V,E)=P(F)\,P(V\mid F)\,P(E\mid F,V)$ reproduz exatamente
-as 8 probabilidades conjuntas (soma 1). \textbf{Independência condicional.} Testamos se $V$
-e $E$ são independentes dado $F$: para $F=0$, $P(V,E\mid F)=0{,}204$ contra o produto 0,167
-($\chi^2=14{,}5$, $p<10^{-3}$); para $F=1$, 0,386 contra 0,350 ($p=0{,}006$). A hipótese do
-Naive Bayes é violada: os dois sintomas compartilham uma causa que não está no modelo (o
-volume de violência).
+\paragraph{Por que a lógica de primeira ordem (LPO) não diz ``42\% de chance''.} Uma regra
+lógica teria de escolher entre
+$\forall x\,(\textit{ViolênciaAlta}(x)\rightarrow\textit{Facção}(x))$ e
+$\forall x\,(\textit{ViolênciaAlta}(x)\rightarrow\neg\textit{Facção}(x))$. As duas são
+falsas: a primeira tem 155 contraexemplos (municípios violentos sem facção) e a segunda, 114.
+A LPO só atribui verdadeiro ou falso; para dizer ``em 42\% dos casos'' é preciso uma medida
+de crença, que é a probabilidade.
 
-\paragraph{Por que a lógica de primeira ordem (LPO) não diz ``42\% de chance''.} A fórmula
-$\forall x\,(\textit{ViolênciaAlta}(x)\rightarrow\textit{Facção}(x))$ é falsa, porque há
-municípios violentos sem facção; a sua negação também não serve. A LPO
-só atribui verdadeiro ou falso; para dizer ``em 42\% dos casos'' é preciso uma medida de
-crença, que é a probabilidade.
+\paragraph{Regra da cadeia.} Com $E$, a conjunta das três variáveis pode ser montada passo a
+passo: $P(F,V,E)=P(F)\,P(V\mid F)\,P(E\mid F,V)$. Por exemplo,
+$P(F{=}1,V{=}1,E{=}1)=0{,}3205\times0{,}440\times0{,}877=0{,}124$. As 8 combinações
+calculadas assim coincidem com a contagem direta e somam 1.
 
-\paragraph{Transições 2024 $\to$ 2025.} Com a 4ª edição, a distribuição conjunta dos regimes
-nos dois anos (Tabela~\ref{tab:trans}) mostra a dinâmica. Dos 549 municípios sem registro em
-2024, 129 (23,5\%) passaram a ter facção em 2025, e a chance cresce com o porte: 13,8\% nos
-pequenos, 30,7\% nos médios e 36,8\% nos grandes. Por Bayes,
-$P(\text{entrada}\mid\text{grande})=0{,}054\times0{,}235/0{,}035=0{,}368$. Também há 45
-``saídas'', o que sugere que parte da mudança vem do método, como o próprio relatório
-admite.
+\paragraph{Independência condicional.} O Naive Bayes da Etapa 4 supõe que, conhecida a
+classe, os sintomas são independentes: $P(V,E\mid F)=P(V\mid F)\,P(E\mid F)$. Testamos essa
+hipótese. Entre os municípios sem facção, $P(V,E\mid F{=}0)=0{,}204$, contra o produto
+0,167 ($\chi^2=14{,}5$, $p<10^{-3}$); entre os com facção, 0,386 contra 0,350
+($p=0{,}006$). Nos dois grupos, violência alta e morte a esclarecer aparecem juntas mais do
+que a independência permitiria: entre os com facção, a chance de morte a esclarecer é de
+88\% com violência alta e de 73\% sem ela. A hipótese do Naive Bayes é violada, porque os
+dois sintomas compartilham uma causa que não está no modelo: o volume de violência.
+
+\paragraph{Transições 2024 $\to$ 2025.} A 4ª edição do Cartografias mostra a dinâmica
+(Tabela~\ref{tab:trans}). A diagonal reúne os municípios que mantiveram o regime. Dos 549
+sem registro em 2024, 129 (23,5\%) passaram a ter facção em 2025, e a chance cresce com o
+porte: 13,8\% nos pequenos, 30,7\% nos médios e 36,8\% nos grandes. Pela regra de Bayes,
+\[
+P(\text{entrada}\mid\text{grande})=\frac{P(\text{grande}\mid\text{entrada})\,P(\text{entrada})}{P(\text{grande})}=\frac{0{,}054\times0{,}235}{0{,}035}=0{,}368,
+\]
+em que 0,054 é a fração de grandes entre os 129 que entraram e 0,035, entre os 549 sem
+registro. No sentido oposto, 45 municípios ``saíram'' da lista (32 + 13): parte da mudança
+entre as edições vem da melhoria do método, como o próprio Cartografias reconhece.
 
 \begin{table}[htbp]
 \centering\small
@@ -391,30 +409,44 @@ disputa & 13 & 18 & 54 & 85\\
 %=====================================================================
 \section{Etapa 4 --- MLE, MAP, Naive Bayes e EM}
 
-\paragraph{MLE e MAP.} Para $\theta=P(\text{facção})$ por estado, a estimativa de máxima
-verossimilhança (MLE, do inglês \emph{Maximum Likelihood Estimation}) é
-$\hat\theta_{MLE}=k/n$ e, com prior Beta(2,2), a estimativa de máximo \emph{a posteriori}
-(MAP) é $\hat\theta_{MAP}=(k+1)/(n+2)$. Onde há poucos municípios, o MLE é
-extremo: no Acre ($k=n=22$), $\hat\theta_{MLE}=1$, o que daria probabilidade zero a um
-município sem facção; o MAP dá 0,958. Em Roraima, 0,933 contra 0,882. Nos estados grandes
-(PA, MA, MT) os dois coincidem até a segunda casa: o prior só pesa quando há pouca
+\paragraph{MLE e MAP.} Para cada estado, estimamos $\theta=P(\text{facção})$ a partir de $k$
+municípios com facção entre $n$. A estimativa de máxima verossimilhança (MLE, do inglês
+\emph{Maximum Likelihood Estimation}) é a proporção observada, $\hat\theta_{MLE}=k/n$. Com
+uma crença inicial (\emph{prior}) Beta(2,2), simétrica em torno de 0,5, a estimativa de
+máximo \emph{a posteriori} (MAP) é $\hat\theta_{MAP}=(k+1)/(n+2)$: é como somar aos dados
+um município fictício com facção e outro sem. Onde há poucos municípios, o MLE vai aos
+extremos: no Acre ($k=n=22$), $\hat\theta_{MLE}=1$, o que tornaria impossível um município
+acriano sem facção; o MAP dá $23/24=0{,}958$. Em Roraima, 0,933 contra 0,882. Nos estados
+grandes (PA, MA, MT), os dois coincidem até a segunda casa: o prior só pesa quando há pouca
 evidência.
 
-\paragraph{Naive Bayes do zero.} Com o Naive Bayes (NB), usando suavização de Laplace e os seis atributos da Etapa 1,
-acurácia de 77,2\% e balanceada de 0,737 em 5 dobras, igual ao \texttt{CategoricalNB}.
+\paragraph{Naive Bayes do zero.} O Naive Bayes (NB) aplica a regra de Bayes aos seis
+atributos da Etapa 1 de uma vez, multiplicando as probabilidades condicionais de cada um sob
+a hipótese de independência dada a classe, que a Etapa 3 mostrou ser só aproximada. As
+probabilidades vêm de contagens com suavização de Laplace (soma 1 a cada contagem), a mesma
+ideia do prior Beta(2,2): sem ela, $P(\texttt{UF}{=}\text{AC}\mid\text{sem facção})=0$
+anularia o produto para qualquer município do Acre. Em 5 dobras, a acurácia é de 77,2\% e a
+balanceada, de 0,737 (de 0,668 a 0,789 entre as dobras), iguais às do \texttt{CategoricalNB}
+do scikit-learn.
 
 \paragraph{EM com variável oculta.} O Cartografias classifica cada município em ``sem
-registro'', ``uma facção (domínio)'' ou ``disputa''. Supomos que esse regime $Z$ é oculto e
-tentamos recuperá-lo só a partir de $x=\log(1+\text{homicídios 2021--23})$, com uma mistura
-de 3 gaussianas ajustada pelo algoritmo Esperança-Maximização (EM, do inglês
-\emph{Expectation-Maximization}; \texttt{em.py}). A log-verossimilhança cresce
-monotonicamente e atinge o critério de parada (variação relativa menor que $10^{-4}$) em 5
-iterações (Figura~\ref{fig:em}). Com $10^{-6}$, o EM leva 358 iterações e a
-log-verossimilhança sobe de $-1347{,}5$ para $-1327{,}6$: o grupo menos violento passa a
-reunir só os 52 municípios sem homicídio, mas o grupo mais violento continua com os mesmos
-219 municípios e a mesma composição. O EM nunca vê o rótulo,
-mas os grupos acompanham o Cartografias (Tabela~\ref{tab:em}): no grupo menos violento,
-1,7\% estão em disputa; no mais violento, 29\%.
+registro'', ``uma facção (domínio)'' ou ``disputa'' (duas ou mais facções). Tratamos esse
+regime como uma variável oculta $Z$ e perguntamos se ele pode ser recuperado só a partir dos
+homicídios, sem ver o rótulo. Modelamos $x=\log(1+\text{homicídios 2021--23})$ como uma
+mistura de 3 gaussianas, uma por regime, ajustada pelo algoritmo Esperança-Maximização (EM,
+do inglês \emph{Expectation-Maximization}; \texttt{em.py}). O passo E calcula a
+probabilidade de cada município pertencer a cada grupo; o passo M reestima, com essas
+probabilidades, o peso $\theta$, a média e a variância de cada gaussiana.
+
+O rótulo só entra depois, para conferir os grupos (Tabela~\ref{tab:em}). No grupo menos
+violento, 88,7\% estão sem registro e 1,7\% em disputa; no mais violento, dois terços têm
+facção e 28,8\% estão em disputa, quase o triplo da média da região (10,5\%). A violência
+carrega a assinatura da disputa entre facções; o domínio de uma facção só, nem sempre
+(``paz do domínio''). A log-verossimilhança cresce a cada iteração e atinge o critério de
+parada (variação relativa menor que $10^{-4}$) em 5 iterações (Figura~\ref{fig:em}). Com
+$10^{-6}$, o EM leva 358 iterações e a log-verossimilhança sobe de $-1347{,}5$ para
+$-1327{,}6$: o grupo menos violento passa a reunir só os 52 municípios sem homicídio, mas o
+grupo mais violento mantém os mesmos 219 municípios e a mesma composição.
 
 \begin{figure}[htbp]
 \centering
@@ -435,20 +467,26 @@ $Z=1$ & 0,36 & 9,2 & 0,724 & 0,219 & 0,057\\
 $Z=2$ & 0,33 & 23,1 & 0,342 & 0,370 & 0,288\\
 \bottomrule
 \end{tabular}
+\begin{flushleft}\footnotesize
+Nota: $\theta$ é o peso do grupo na mistura; ``hom.\ típicos'' é o centro da gaussiana
+($e^{\mu}-1$), em homicídios somados de 2021 a 2023.
+\end{flushleft}
 \fontedados
 \end{table}
 
-Com a \emph{taxa} por 100 mil no lugar da contagem, a correspondência é mais fraca (o grupo
-mais violento tem 15\% em disputa), e o EM leva 38 iterações. A facção está ligada ao
-\emph{volume} de violência, que acompanha o tamanho do mercado, e não só à intensidade
-relativa. Com a taxa, uma componente tenta colapsar sobre os municípios sem nenhum
-homicídio; um piso de variância ($\sigma^2\ge0{,}05$) evita a singularidade.
+\paragraph{Contagem $\times$ taxa.} Com a \emph{taxa} por 100 mil habitantes no lugar da
+contagem, a correspondência piora: o grupo mais violento tem só 15\% em disputa, e o EM leva
+38 iterações. A facção acompanha o \emph{volume} de violência, que cresce com o tamanho do
+mercado, e não só a intensidade relativa à população. Com a taxa há também um problema
+técnico: os 52 municípios sem homicídio têm exatamente o mesmo valor, e uma gaussiana tende a
+colapsar sobre eles, com variância indo a zero e verossimilhança ao infinito. Um piso de
+variância ($\sigma^2\ge0{,}05$) evita essa singularidade.
 
-\paragraph{NB puro $\times$ NB + EM.} Trocando os tercis de \texttt{TXH} pelo grupo $Z$
-(ajustado só no treino de cada dobra), o Naive Bayes passa de 77,2\% para 77,7\%
-(balanceada de 0,737 para 0,745). O ganho é pequeno: $Z$ traz o volume de violência, mas
-boa parte dessa informação já estava em \texttt{PORTE}. A $P(F)$ do NB + EM, calculada fora
-da dobra (AUC 0,84), é gravada para a Etapa 6.
+\paragraph{NB puro $\times$ NB + EM.} Trocando os tercis de \texttt{TXH} pelo grupo $Z$ do
+EM (ajustado só no treino de cada dobra), o Naive Bayes passa de 77,2\% para 77,7\% de
+acurácia (balanceada de 0,737 para 0,745). O ganho é pequeno porque $Z$ traz o volume de
+violência, informação que já estava em boa parte em \texttt{PORTE}. A probabilidade de
+facção do NB + EM, calculada fora da dobra (AUC 0,84), segue para a Etapa 6.
 
 %=====================================================================
 \section{Etapa 5 --- Rede bayesiana}

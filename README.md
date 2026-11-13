@@ -32,7 +32,7 @@ municípios passaram a ter facção em 2025?
 | `montar_base_vde.py`, `montar_populacao_ibge.py`, `extrair_cartografias_2025.py` | Scripts que geram as bases |
 | `montar_bases_externas.py` | Baixa e agrega IBGE, INPE e IBAMA em `dados/variaveis_externas_municipio.csv` (brutos em `dados/brutos/`, fora do git) |
 | `dados/` | Base rotulada com população, tabelas do Cartografias 2024 e 2025, população do IBGE e as saídas reutilizadas entre etapas (`ganho_etapa1.csv`, `decisoes_arvore.csv`, `probabilidades_etapa4.csv`, `probabilidades_bayesianas.csv`) |
-| `tex/relatorio.tex`, `tex/relatorio.pdf`, `tex/referencias.bib` | Relatório final (artigo no padrão ABNT com abnTeX2, 18 páginas) |
+| `tex/relatorio.tex`, `tex/relatorio.pdf`, `tex/referencias.bib` | Relatório final (artigo no padrão ABNT com abnTeX2, 19 páginas) |
 | `tex/relatorio_2colunas.tex`, `tex/relatorio_2colunas.pdf` | Versão anterior do relatório, em duas colunas |
 | `artigos/README.md` | Artigos científicos citados, com links e onde cada um embasa o relatório |
 | `figuras/` | Figuras geradas pelos notebooks e usadas no relatório |
